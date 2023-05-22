@@ -8,4 +8,10 @@ class Jurusan extends Model
 {
     protected $table = 'jurusan';
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
+    }
+    
 }

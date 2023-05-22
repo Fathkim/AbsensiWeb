@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -18,12 +19,6 @@ class User extends Authenticatable
      protected $table = 'users';
      protected $guarded = [];
 
-     protected $appends = ['hashid'];
-
-     public function getHashidAttribute()
-     {
-         return Hashids::encode($this->attributes['id']);
-     }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,26 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    // Multyper User
-    public function isAdmin()
-    {
-        return $this->level === 'admin';
-    }
-
-    public function isGuru()
-    {
-        return $this->level === 'guru';
-    }
-
-    public function isKaprodi()
-    {
-        return $this->level === 'kaprodi';
-    }
-
-    public function isSiswa()
-    {
-        return $this->level === 'siswa';
-    }
-
 }

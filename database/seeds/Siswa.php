@@ -12,12 +12,10 @@ class Siswa extends Seeder
     public function run()
     {
         $user = new \App\User;
-        $user->name = "siswa";
-        // $user->username = "admin";
-        $user->email = "siswa@test.com";
+        $user->name = "gharyn";
+        $user->email = "persolna1243@gmail.com";
         $user->level = "siswa";
-        $user->password = \Hash::make('asdasdasd');
-        // $user->id_mapel = null;
+        $user->password = \Hash::make('gharyn');
         $user->save();
     }
 }

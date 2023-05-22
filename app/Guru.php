@@ -8,7 +8,7 @@ class Guru extends Model
 {
     protected $table = 'guru';
     protected $guarded = [];
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
     }

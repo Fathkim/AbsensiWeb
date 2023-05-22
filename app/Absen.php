@@ -8,7 +8,7 @@ class Absen extends Model
 {
     protected $table = 'absen';
     protected $guarded = [];
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User', 'id_user');
     }
