@@ -28,6 +28,8 @@ class HomeController extends Controller
 
     public function show()
     {
-        
+        $date = Carbon::now();
+        $bulan = $date->format('F');
+        return view('home.report', compact('bulan'));
     }
 }
