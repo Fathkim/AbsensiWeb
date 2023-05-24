@@ -26,9 +26,12 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 // Home | Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
 
 // User
 Route::get('/user', 'UserController@index')->name('user');
+Route::get('/izin', 'IzinController@index')->name('izin');
+Route::post('/izin/send', 'IzinController@store');
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::post('/data-create', 'UserController@store');
 

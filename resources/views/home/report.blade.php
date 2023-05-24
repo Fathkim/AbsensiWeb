@@ -1,12 +1,7 @@
 @extends('layouts.main-view')
 
-
-@if (Auth::user()->level == 'siswa')
-@include('home.siswa')
-@else
-
 @section('title')
-Dashboard
+Monthly Report
 @endsection
 
 @section('sidebar')
@@ -21,7 +16,7 @@ Dashboard
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="{{url('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -51,7 +46,7 @@ Dashboard
     </li>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
@@ -60,7 +55,8 @@ Dashboard
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('profile') }}">
+        
+        <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
@@ -99,87 +95,58 @@ Dashboard
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
+
 @endsection
 
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="{{url('/monthly-report')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-download fa-sm text-white-50"></i> Laporan bulanan</a>
+    <h1 class="h3 mb-0 text-gray-800">Monthly Report</h1>
 </div>
 
-<!-- Content Row -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-            Record Absensi
-        </h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>NISN</th>
-                        <th>Statsu</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
+<!-- Earnings (Annual) Card Example -->
+<div class="row">
+    <div class="col-xl-6 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
+                            Start Date</div>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <input type="text" id="datepicker">
+
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
+                            End Date</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-check fa-2x text-danger"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Content Row -->
+
+<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-download fa-sm text-white-50 mx-2"></i>
+    Download File
+</a>
 
 @endsection
-@endif

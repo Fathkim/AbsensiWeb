@@ -1,5 +1,9 @@
 @extends('layouts.main-view')
 
+@section('title')
+Create User
+@endsection
+
 @section('sidebar')
 <!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -43,7 +47,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
     </li>
@@ -56,6 +60,32 @@
             <span>Profile</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
+            <i class="fas fa-fw fa-sign-out"></i>
+            <span>logout</span></a>
+    </li>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -74,7 +104,7 @@
         <i class="fas fa-user fa-sm text-white-50"></i> View Staff</a>
 </div>
 <div class="card shadow py-3 px-4">
-    <form action="{{route('data-create')}}" method="post">
+    <form action="{{url('data-create')}}" method="post">
         @csrf
         <div class="row">
             <div class="col-md-12 input-group">
@@ -101,7 +131,7 @@
             <div class="col-md-6">
                 <div class="input-group mb-4">
                     <span class="input-group-text col-md-2 form-control" id="basic-addon1">password</span>
-                    <input type="password" class="form-control" require name="password" placeholder="••••"
+                    <input type="password" class="form-control" require name="password" placeholder="password"
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
