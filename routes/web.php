@@ -77,6 +77,9 @@ Route::middleware(['PreventAdminAccess'])->group(function () {
     
 });
 
+// qrcode
+Route::get('/qrcode', 'QrCodeController@index');
+
 // Rute-rute yang memerlukan peran admin
 Route::middleware(['checkrole:admin'])->group(function () {
     
