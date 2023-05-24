@@ -29,6 +29,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // User
 Route::get('/user', 'UserController@index')->name('user');
+Route::get('/izin', 'IzinController@index')->name('izin');
+Route::post('/izin/send', 'IzinController@store');
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::post('/data-create', 'UserController@store');
 
