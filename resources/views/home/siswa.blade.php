@@ -22,7 +22,7 @@ Absen
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/izin">
             <i class="fas fa-fw fa-info"></i>
             <span>Izin (udzur)</span></a>
     </li>
