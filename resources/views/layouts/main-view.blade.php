@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Absensi | @yield('title')</title>
+    <title>@yield('title')</title>
 
     <!-- image icon web -->
     <link rel="icon" type="image/x-icon" href="{{ asset('images/icon-web.png') }}">
@@ -66,7 +66,7 @@
                             <a class="nav-link" id="userDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <span
-                                    class="mr-4 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                    class="mr-4 d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle" src="{{asset('images/SMKMuhammadiyah2.jpg')}}">
                             </a>
                         </li>
@@ -76,7 +76,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid my-5">
+                <div class="container-fluid my-5 ">
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->

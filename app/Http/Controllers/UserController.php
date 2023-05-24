@@ -6,7 +6,6 @@ use App\Kelas;
 use App\User;
 use App\Mapel;
 use Carbon\Carbon;
-
 use Illuminate\Http\Request;
 
 
@@ -45,20 +44,26 @@ class UserController extends Controller
         $data['barcode'] = $number;
 
         User::create($data);
-        return redirect('/create-user')->with('success', 'Data Added successfully.');
+        return redirect('/create-user')->with('success', 'User add successfully.');
     }
 
     public function mapelStore(Request $request)
     {
 
         Mapel::create($request->all());
-        return redirect('create-user');
+        return redirect('create-user')->with('success', 'Mapel created successfully.');
     }
 
     public function kelasStore(Request $request)
     {
         Kelas::create($request->all());
-        return redirect('create-user');
+        return redirect('create-user')->with('success', 'Kelas created successfully.');
+    }
+
+    public function jurusanStore(Request $request)
+    {
+        Jurusan::create($request->all());
+        return redirect('create-user')->with('success', 'Jurusan created successfully.');
     }
 
 }

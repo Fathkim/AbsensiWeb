@@ -192,6 +192,61 @@
                             </tr>
                         </tbody>
                     </table>
+
+    @if(Auth::user()->level == 'guru' || Auth::user()->level == 'kaprodi')
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Buat Akademik</span></a>
+    </li>
+    @endif
+
+    @if(Auth::user()->level != 'siswa')
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('monthly-report')}}">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Laporan Bulanan</span></a>
+    </li>
+    @endif
+
+    @if(Auth::user()->level == 'siswa')
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+    @endif
+
+    <li class="nav-item">
+        <a class="nav-link" href="/profile">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
+            <i class="fas fa-fw fa-sign-out"></i>
+            <span>logout</span></a>
+    </li>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
                 </div>
             </div>
         </div>

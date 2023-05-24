@@ -90,7 +90,7 @@ class GuruController extends Controller
     {
         $mapel = Mapel::all();
         $user = User::find($id);
-        $guru = Guru::find($id);
+        $guru = Guru::where('id_user',$id)->get()->all();
         return view('user.guru.edit', compact('user', 'mapel', 'guru'));
     }
 

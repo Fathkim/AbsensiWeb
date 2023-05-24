@@ -5,7 +5,8 @@
 Siswa User
 @endsection
 
-@section('sidebar')<!-- Sidebar - Brand -->
+@section('sidebar')
+<!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
@@ -62,15 +63,20 @@ Siswa User
             <span>Laporan Bulanan</span></a>
     </li>
 
-
-    @if (Auth::user()->level != 'admin')
+    @if(Auth::user()->level == 'siswa')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+    @endif
+
+    <li class="nav-item">
+        <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
@@ -109,19 +115,20 @@ Siswa User
 @endsection
 
 @section('content')
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block">User Siswa</h1>
 
-<a href="{{route('user')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+    <a href="{{route('user')}}" class="d-sm-inline-block ml-auto btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+</div>
 
 <!-- DataTales Example -->
-<div class="card shadow mb-4 mt-5">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User Siswa</h6>
-    </div>
+<div class="rounded border-left-primary shadow mb-4 mt-5">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-            <thead class="bg-dark text-white">
+                <thead class="bg-dark text-white">
                     <tr>
                         <th>Nama</th>
                         <th>E-mail</th>

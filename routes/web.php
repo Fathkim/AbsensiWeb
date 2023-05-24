@@ -39,7 +39,6 @@ Route::post('/izin/send', 'IzinController@store');
 // kaprodi view
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
 Route::get('/kaprodi/show/{id}', 'KaprodiController@show')->name('show-kaprodi');
-Route::get('/kaprodi-biodata', 'KaprodiController@create')->name('create-view');
 
 // Kaprodi Route Action Form
 Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');
@@ -87,23 +86,28 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/guru', 'GuruController@guru')->name('guru');
     Route::get('/siswa', 'SiswaController@siswa')->name('siswa');
     
-    // View User
-    Route::get('/create-user', 'UserController@create')->name('create-user');
     // User Action
     Route::post('/data-create', 'UserController@store');
     // Create mapel
     Route::post('/mapel-create', 'UserController@mapelStore');
     // Create kelas
     Route::post('/kelas-create', 'UserController@kelasStore');
+    // Create jurusan
+    Route::post('/jurusan-create', 'UserController@jurusanStore');
 });
 
 
 // Rute-rute yang tidak boleh diakses oleh siswa
 Route::middleware(['PreventSiswaAccess'])->group(function () {
     
+    // View User
+    Route::get('/create-user', 'UserController@create')->name('create-user');
+    // Create mapel
+    Route::post('/mapel-create', 'UserController@mapelStore');
+    // Create kelas
+    Route::post('/kelas-create', 'UserController@kelasStore');
     // User
     Route::get('/user', 'UserController@index')->name('user');
-
     // Monthly Report
     Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
 });
