@@ -37168,3 +37168,13 @@ module.exports = __webpack_require__(/*! /Users/anandagharynsinulingga/Documents
 /***/ })
 
 /******/ });
+
+$("#keterangan").change(function() {
+  var selectedOption = $(this).val();
+
+  if (selectedOption === "lainnya") {
+      $("#description-container").show();
+  } else {
+      $("#description-container").hide();
+  }
+});
