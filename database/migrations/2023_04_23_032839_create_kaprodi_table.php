@@ -14,10 +14,13 @@ class CreateKaprodiTable extends Migration
     public function up()
     {
         Schema::create('kaprodi', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increment('id');
             $table->integer('id_jurusan')->unsigned();
-            $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('cascade');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_jurusan')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 
