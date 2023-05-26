@@ -142,6 +142,9 @@ Create User
     </form>
 </div>
 
+<a href="{{route('user')}}" class="d-none mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+
 <!-- Content Row -->
 <!-- disini kita akan membuat form untuk membuat users dan menghash id tersebut -->
 
