@@ -60,7 +60,7 @@ Dashboard
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('profile') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
