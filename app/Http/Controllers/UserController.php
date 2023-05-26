@@ -26,7 +26,7 @@ class UserController extends Controller
     public function store()
     {
         $date = Carbon::now();
-        $bulanDanTanggal = $date->format('F j');
+        $bulanDanTanggal = $date->format('d F Y');
 
         $data = request()->validate([
             'name' => 'required',
@@ -34,17 +34,16 @@ class UserController extends Controller
             'level' => 'required',
             'password' => 'required|min:5',
         ]);
-    
-        // Menggunakan $data untuk mengakses nilai input
+
         if (request()->input('password')) {
             $data['password'] = bcrypt(request()->input('password'));
         }
-        
-        if(request()->input('employe_since')) {
-            $data['employe_since'] = $bulanDanTanggal;
-        }
-    
+
+        // Mengatur nilai employe_since secara otomatis
+        $data['employe_since'] = $bulanDanTanggal;
+
         User::create($data);
         return redirect('/create-user');
+
     }
 }

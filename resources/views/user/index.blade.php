@@ -112,7 +112,7 @@ View Staff
                         <th>Email</th>
                         <th>Mapel</th>
                         <th>Status</th>
-                        <th>Create at</th>
+                        <th>Employed At</th>
                         <th>Action</th>
                     </tr>
                 </thead>

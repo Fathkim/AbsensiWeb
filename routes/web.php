@@ -24,6 +24,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
+
 // Home | Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');

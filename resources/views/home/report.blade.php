@@ -56,7 +56,7 @@ Monthly Report
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('profile')}}">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
@@ -113,7 +113,6 @@ Monthly Report
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                             Start Date</div>
-
                             <input type="text" id="datepicker">
 
                     </div>
@@ -131,9 +130,7 @@ Monthly Report
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
                             End Date</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                            <input type="text" id="datepicker">
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-check fa-2x text-danger"></i>

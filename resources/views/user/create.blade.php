@@ -131,8 +131,7 @@ Create User
             <div class="col-md-6">
                 <div class="input-group mb-4">
                     <span class="input-group-text col-md-2 form-control" id="basic-addon1">password</span>
-                    <input type="password" class="form-control" require name="password" placeholder="password"
-                        aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="password" class="form-control" require name="password" placeholder="password"  aria-describedby="basic-addon1">
                 </div>
             </div>
             <div class="col-md-12">
