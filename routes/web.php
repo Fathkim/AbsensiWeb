@@ -27,31 +27,47 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 // Home | Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
 
 // izin
 Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
-// User
-Route::get('/user', 'UserController@index')->name('user');
-Route::get('/create-user', 'UserController@create')->name('create-user');
-Route::post('/data-create', 'UserController@store');
 
-// Midlleware
+
+// Rute-rute yang memerlukan peran admin
 Route::middleware(['checkrole:admin'])->group(function () {
-    // Rute-rute yang memerlukan peran admin
+    
+    // User
+    Route::get('/create-user', 'UserController@create')->name('create-user');
+    Route::post('/data-create', 'UserController@store');
 });
 
+
+// Rute-rute yang tidak boleh diakses oleh siswa
+Route::middleware(['PreventSiswaAccess'])->group(function () {
+    
+    // User
+    Route::get('/user', 'UserController@index')->name('user');
+
+    // Monthly Report
+    Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
+});
+
+
+// Rute-rute yang memerlukan peran guru
 Route::middleware(['checkrole:guru'])->group(function () {
-    // Rute-rute yang memerlukan peran guru
+    
 });
 
+
+// Rute-rute yang memerlukan peran kaprodi
 Route::middleware(['checkrole:kaprodi'])->group(function () {
-    // Rute-rute yang memerlukan peran kaprodi
+    
 });
 
+
+// Rute-rute yang memerlukan peran siswa
 Route::middleware(['checkrole:siswa'])->group(function () {
-    // Rute-rute yang memerlukan peran siswa
+
 });
 

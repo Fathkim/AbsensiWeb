@@ -21,6 +21,7 @@ class CreateSiswaTable extends Migration
             $table->integer('no_hp');
             $table->integer('nis');
             $table->integer('nisn');
+            $table->string('photo')->nullable();
             $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
