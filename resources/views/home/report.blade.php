@@ -7,7 +7,7 @@ Monthly Report
 @section('sidebar')
 <!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
     </a>
@@ -30,6 +30,7 @@ Monthly Report
         Admin
     </div>
 
+    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
@@ -44,6 +45,7 @@ Monthly Report
             </div>
         </div>
     </li>
+    @endif
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
@@ -116,8 +118,8 @@ Monthly Report
                             <input type="text" id="datepicker">
 
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                    <div class="col-auto  d-none d-sm-inline-block">
+                        <i class="fas fa-clock fa-2x text-success"></i>
                     </div>
                 </div>
             </div>
@@ -132,7 +134,7 @@ Monthly Report
                             End Date</div>
                             <input type="text" id="datepicker">
                     </div>
-                    <div class="col-auto">
+                    <div class="col-auto d-none d-sm-inline-block">
                         <i class="fas fa-check fa-2x text-danger"></i>
                     </div>
                 </div>
@@ -141,7 +143,7 @@ Monthly Report
     </div>
 </div>
 
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+<a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
     <i class="fas fa-download fa-sm text-white-50 mx-2"></i>
     Download File
 </a>

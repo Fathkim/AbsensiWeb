@@ -5,8 +5,8 @@ Absen
 @section('sidebar')
 <!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem; alt=" Gambar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
+        <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;"alt= "Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
     </a>
 

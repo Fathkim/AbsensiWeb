@@ -1,10 +1,13 @@
 @extends('layouts.main-view')
 
+@section('title')
+Profile
+@endsection
 @section('sidebar')
 
 <!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
     </a>
@@ -27,6 +30,7 @@
         Admin
     </div>
 
+    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
@@ -41,6 +45,7 @@
             </div>
         </div>
     </li>
+    @endif  
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
