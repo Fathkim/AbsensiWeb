@@ -23,6 +23,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile/edit', 'ProfileController@edit')->name('profile');
 
 
 // Home | Dashboard
@@ -36,7 +37,7 @@ Route::post('/izin/send', 'IzinController@store');
 // User
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/create-user', 'UserController@create')->name('create-user');
-Route::post('/data-create', 'UserController@store');
+Route::post('/data-create', 'UserController@store')->name('data-create');
 
 // Midlleware
 Route::middleware(['checkrole:admin'])->group(function () {

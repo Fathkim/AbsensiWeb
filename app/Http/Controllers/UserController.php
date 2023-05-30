@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Mapel;
 use Carbon\Carbon;
@@ -27,14 +26,14 @@ class UserController extends Controller
     {
         $date = Carbon::now();
         $bulanDanTanggal = $date->format('d F Y');
-
+        
         $data = request()->validate([
             'name' => 'required',
             'email' => 'required',
             'level' => 'required',
             'password' => 'required|min:5',
         ]);
-
+        
         if (request()->input('password')) {
             $data['password'] = bcrypt(request()->input('password'));
         }
@@ -46,4 +45,5 @@ class UserController extends Controller
         return redirect('/create-user');
 
     }
+
 }

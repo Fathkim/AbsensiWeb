@@ -106,35 +106,38 @@ Create User
         <i class="fas fa-user fa-sm text-white-50"></i> View Staff</a>
 </div>
 <div class="card shadow py-3 px-4">
-    <form action="{{url('data-create')}}" method="post">
+    <form action="{{ route('data-create')}}" method="post" id="user-form">
         @csrf
         <div class="row">
             <div class="col-md-12 input-group">
                 <span class="input-group-text col-md-2 form-control" id="basic-addon1">Nama Lengkap</span>
-                <input type="text" class="form-control" require name="name" placeholder="Username" aria-label="Username"
+                <input type="text" class="form-control" required name="name" placeholder="Username" aria-label="Username"
                     aria-describedby="basic-addon1">
             </div>
             <div class="col-md-12 input-group my-3">
                 <span class="input-group-text col-md-2 form-control" id="basic-addon1">Alamat E-mail</span>
-                <input type="email" class="form-control" require name="email" placeholder="mail" aria-label="Username"
+                <input type="email" class="form-control" required name="email" placeholder="mail" aria-label="Username"
                     aria-describedby="basic-addon1">
             </div>
             <div class="col-md-6 input-group mb-3">
                 <label class="form-control col-md-2 input-group-text" for="inputGroupSelect01">Lavel</label>
-                <select name="level" require class="form-control form-select" id="inputGroupSelect01">
+                <select name="level" required class="form-control form-select" id="inputGroupSelect01">
                     <option>Choose...</option>
                     <option value="kaprodi">Kaprodi</option>
-                    <option value="siswa">Siswa</option>
                     <option value="guru">Guru</option>
+                    <option value="siswa">Siswa</option>
                 </select>
             </div>
 
-
             <div class="col-md-6">
-                <div class="input-group mb-4">
+                <div class="input-group">
                     <span class="input-group-text col-md-2 form-control" id="basic-addon1">password</span>
-                    <input type="password" class="form-control" require name="password" placeholder="password"  aria-describedby="basic-addon1">
+                    <input type="password" class="form-control" required name="password" placeholder="password"
+                        aria-describedby="basic-addon1">
                 </div>
+                @error('password')
+                            <p class="text-danger">Password minimal 5</p>
+                        @enderror
             </div>
             <div class="col-md-12">
                 <button type="submit" class="form-control btn btn-success">Tambah Data</button>
@@ -144,7 +147,7 @@ Create User
 </div>
 
 <a href="{{route('user')}}" class="d-none mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
 
 <!-- Content Row -->
 <!-- disini kita akan membuat form untuk membuat users dan menghash id tersebut -->
