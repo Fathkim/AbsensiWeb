@@ -33,6 +33,10 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::bind('id', function ($value) {
+            return Hashids::decode($value)[0] ?? null;
+        });
     }
 
     /**

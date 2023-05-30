@@ -17,6 +17,7 @@ class CreateKaprodiTable extends Migration
             $table->increments('id');
             $table->integer('id_jurusan')->unsigned();
             $table->integer('id_user')->unsigned();
+            $table->string('photo')->nullable();
             $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         // custom middleware
         'checkrole' => \App\Http\Middleware\CheckRole::class,
+        'PreventSiswaAccess' => \App\Http\Middleware\PreventSiswaAccess::class,
     ];
 
     /**

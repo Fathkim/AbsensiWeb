@@ -100,6 +100,8 @@ View Staff
 
 @section('content')
 
+<a href="{{route('create-user')}}" class="mb-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-user fa-sm text-white-50"></i> Create Staff</a>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -110,6 +112,7 @@ View Staff
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-dark text-white">
                     <tr>
+                        <th>id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Mapel</th>
@@ -132,6 +135,7 @@ View Staff
                     @foreach ($user as $item)
                     @if ($item->level != 'admin' && $item->level != 'siswa')
                     <tr>
+                        <td>{!!DNS1D::getBarcodeHTML("$item->barcode", 'PHARMA')!!}</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>San Francisco</td>
