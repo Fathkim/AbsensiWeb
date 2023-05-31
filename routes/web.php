@@ -21,12 +21,18 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
+// Profile
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile/edit', 'ProfileController@edit')->name('profile');
+
+
 // Home | Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
 
 // izin
 Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
+
 
 // user info
 Route::get('/edit/{id}', 'UserController@edit')->name('user-info');
@@ -36,8 +42,11 @@ Route::delete('/user/{id}', 'UserController@clear')->name('user-clear');
 // mapel
 Route::post('/mapel-create', 'UserController@mapelStore');
 
-// Profile
-Route::get('/profile', 'ProfileController@index')->name('profile');
+// User
+Route::get('/user', 'UserController@index')->name('user');
+Route::get('/create-user', 'UserController@create')->name('create-user');
+Route::post('/data-create', 'UserController@store')->name('data-create');
+
 
 // admin denined
 Route::middleware(['PreventAdminAccess'])->group(function () {

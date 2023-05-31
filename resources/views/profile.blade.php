@@ -22,6 +22,8 @@ Profile
             <span>Dashboard</span></a>
     </li>
 
+    @if (Auth::user()->level == 'admin')
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -30,7 +32,6 @@ Profile
         Admin
     </div>
 
-    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
@@ -45,7 +46,7 @@ Profile
             </div>
         </div>
     </li>
-    @endif  
+    @endif
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
@@ -103,8 +104,8 @@ Profile
 <!-- Earnings (Annual) Card Example -->
 <div class="row">
     <div class="col-xl-4 col-md-4 mb-4 text-center">
-    <img src="{{ asset('/images/icon-web.png') }}" alt="#"
-            class="rounded img-fluid img-thumbnail mb-3" style="max-width: 100%; width:250px;">
+        <img src="{{ asset('/images/icon-web.png') }}" alt="#" class="rounded img-fluid img-thumbnail mb-3"
+            style="max-width: 100%; width:250px;">
     </div>
     <div class="col-xl-8 col-md-8 mb-4">
         <div class="card shadow h-100 py-2">
@@ -112,10 +113,36 @@ Profile
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
-                            Your Biodata</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                            Your Identiti Card</div>
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <tr class="text-capitalize">
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td>{{Auth::user()->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td>{{Auth::user()->email}}</td>
+                                </tr>
+                                <tr class="text-capitalize">
+                                    <td>kelas</td>
+                                    <td>:</td>
+                                    <td>11 rpl b</td>
+                                </tr>
+                                <tr class="text-capitalize">
+                                    <td>NISN</td>
+                                    <td>:</td>
+                                    <td>0989899</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="d-flex mt-auto">
+                            <a href="{{url('/profile/edit', auth()->user()->id)}}" type="button" class="btn btn-success">Edit
+                                Bio</a>
+                            <button type="button" class="btn btn-warning ms-2">Setting</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Mapel;
 use Carbon\Carbon;
@@ -51,4 +50,5 @@ class UserController extends Controller
         Mapel::create($data);
         return redirect('/create-user');
     }
+
 }

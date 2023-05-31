@@ -23,7 +23,8 @@
 </head>
 
 <body>
-    <div class="bg-gradient-primary vh-100 d-flex align-items-center">
+    <div class="vh-100 d-flex align-items-center">
+        <img src="https://img.freepik.com/free-vector/blue-hexagonal-background_1017-20899.jpg?w=740&t=st=1684901480~exp=1684902080~hmac=d469a51d0141cf81961ac22116869fe4a67d0eb847228badb6f8da9e8353bcb6" alt="" style="position: absolute; height: 100vh; width:100vw; filter:blur(1.5px);">
         <div class="container">
             <!-- Outer Row -->
             <div class="row justify-content-center">
