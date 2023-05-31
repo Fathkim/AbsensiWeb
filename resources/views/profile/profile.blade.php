@@ -121,7 +121,7 @@ Profile
 @endsection
 
 @section('content')
-@if (Auth::user()->level == 'admin')
+@if (Auth::user()->level != 'admin')
 
 @else
 <!-- Earnings (Annual) Card Example -->

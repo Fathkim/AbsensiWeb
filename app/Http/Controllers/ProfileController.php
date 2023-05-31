@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Kelas;
 use App\Mapel;
+use App\User;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile');
+    
+        return view('profile.profile');
     }
 
     public function edit(){
