@@ -25,12 +25,12 @@ Siswa User
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
     </div>
 
-    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"

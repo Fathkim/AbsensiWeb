@@ -30,18 +30,18 @@ Dashboard
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
     </div>
 
-    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-server"></i>
-            <span>User</span>
+            <span>Pengguna</span>
         </a>
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

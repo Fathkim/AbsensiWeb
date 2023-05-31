@@ -23,7 +23,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/edit', 'ProfileController@edit')->name('profile');
+Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile');
 
 
 // Home | Dashboard

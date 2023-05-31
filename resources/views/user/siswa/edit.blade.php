@@ -8,8 +8,6 @@ Edit Your User
 @endsection
 
 @section('content')
-
-
 <!-- content -->
 <div class="container">
     <div class="rounded rounded-3 shadow-lg bg-white p-3">
