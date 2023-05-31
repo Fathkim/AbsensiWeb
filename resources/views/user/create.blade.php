@@ -40,8 +40,9 @@ Create User
         </a>
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{url('user')}}">View</a>
-                <a class="collapse-item active" href="{{url('create-user')}}">Create</a>
+                <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
+                <a class="collapse-item" href="{{url('guru')}}">Guru</a>
+                <a class="collapse-item active" href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
     </li>
@@ -100,10 +101,8 @@ Create User
 
 @section('content')
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Buat User</h1>
-    <a href="{{route('user')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-user fa-sm text-white-50"></i> View Staff</a>
+<div class="d-sm-flex align-items-center  justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat User</h1>
 </div>
 <div class="card shadow py-3 px-4">
     <form action="{{url('data-create')}}" method="post" id="myForm">
@@ -144,9 +143,42 @@ Create User
         </div>
     </form>
 </div>
-
-<a href="{{route('user')}}" class="d-none mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
     <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center  justify-content-between mb-1 mt-5">
+    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat Mapel</h1>
+</div>
+
+<div class="row px-2">
+
+<div class="card shadow  col-md-6 py-3 ">
+    <form action="{{url('mapel-create')}}" method="post" id="myForm">
+        @csrf
+        <div class="input-group">
+                <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
+                <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
+                    aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+    </form>
+</div>
+<div class="card shadow  col-md-6 py-3 ">
+    <form action="{{url('mapel-create')}}" method="post" id="myForm">
+        @csrf
+        <div class="input-group">
+                <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
+                <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
+                    aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+    </form>
+</div>
+</div>
+
+<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+
 
 <!-- Content Row -->
 <!-- disini kita akan membuat form untuk membuat users dan menghash id tersebut -->
