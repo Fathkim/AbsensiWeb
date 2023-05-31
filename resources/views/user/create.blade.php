@@ -58,7 +58,7 @@ Create User
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/profile">
+        <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
@@ -105,7 +105,7 @@ Create User
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat User</h1>
 </div>
 <div class="card shadow py-3 px-4">
-    <form action="{{url('data-create')}}" method="post" id="myForm">
+    <form action="{{ route('data-create')}}" method="post" id="user-form">
         @csrf
         <div class="row">
             <div class="col-md-12 input-group">
@@ -115,7 +115,7 @@ Create User
             </div>
             <div class="col-md-12 input-group my-3">
                 <span class="input-group-text col-md-2 form-control" id="basic-addon1">Alamat E-mail</span>
-                <input type="email" class="form-control" require name="email" id="email" placeholder="Mail"
+                <input type="email" class="form-control" require name="email" id="email" placeholder="mail"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="col-md-6 input-group mb-3">
@@ -134,7 +134,9 @@ Create User
                     <input type="password" class="form-control" require name="password" placeholder="password"
                         id="password" aria-describedby="basic-addon1">
                 </div>
-                <p class="text-secondary mt-1">Password minimal 5</p>
+                @error('password')
+                            <p class="text-danger">Password minimal 5</p>
+                        @enderror
             </div>
             <div class="col-md-12">
                 <button type="submit" class="form-control btn btn-success" id="submitButton" disabled>Tambah

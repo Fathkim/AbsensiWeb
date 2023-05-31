@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 // Auth
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login', 'user');
 Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/edit', 'ProfileController@edit')->name('profile-edit');
+Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile');
 
 
 // Home | Dashboard
