@@ -33,14 +33,34 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
+
+// user info
+Route::get('/edit/{id}', 'UserController@edit')->name('user-info');
+Route::put('/update/{id}', 'UserController@update')->name('user-update');
+Route::delete('/user/{id}', 'UserController@clear')->name('user-clear');
+
+// mapel
+Route::post('/mapel-create', 'UserController@mapelStore');
+
 // User
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::post('/data-create', 'UserController@store')->name('data-create');
 
 
+// admin denined
+Route::middleware(['PreventAdminAccess'])->group(function () {
+    
+    
+});
+
 // Rute-rute yang memerlukan peran admin
 Route::middleware(['checkrole:admin'])->group(function () {
+    
+    // view user
+    Route::get('/kaprodi', 'KaprodiController@kaprodi')->name('kaprodi');
+    Route::get('/guru', 'GuruController@guru')->name('guru');
+    Route::get('/siswa', 'SiswaController@siswa')->name('siswa');
     
     // User
     Route::get('/create-user', 'UserController@create')->name('create-user');
@@ -75,4 +95,3 @@ Route::middleware(['checkrole:kaprodi'])->group(function () {
 Route::middleware(['checkrole:siswa'])->group(function () {
 
 });
-

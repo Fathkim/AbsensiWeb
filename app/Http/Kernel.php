@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         // custom middleware
         'checkrole' => \App\Http\Middleware\CheckRole::class,
         'PreventSiswaAccess' => \App\Http\Middleware\PreventSiswaAccess::class,
+        'PreventAdminAccess' => \App\Http\Middleware\PreventAdminAccess::class,
     ];
 
     /**

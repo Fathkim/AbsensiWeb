@@ -15,7 +15,7 @@ class ProfileController extends Controller
     public function edit(){
         $kelas = Kelas::all();
         $mapel = Mapel::all();
-        return view('profile-edit', compact('kelas', 'mapel'));
+        return view('profile.edit', compact('kelas', 'mapel'));
     }
 
 }

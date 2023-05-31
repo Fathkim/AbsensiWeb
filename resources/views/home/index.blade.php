@@ -30,23 +30,24 @@ Dashboard
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
     </div>
 
-    @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-server"></i>
-            <span>User</span>
+            <span>Pengguna</span>
         </a>
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{url('user')}}">View</a>
-                <a class="collapse-item" href="{{url('create-user')}}">Create</a>
+                <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
+                <a class="collapse-item" href="{{url('guru')}}">Guru</a>
+                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
     </li>
@@ -59,13 +60,15 @@ Dashboard
             <span>Laporan Bulanan</span></a>
     </li>
 
-
+    @if (Auth::user()->level != 'admin')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
+    @endif
+
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
@@ -106,8 +109,8 @@ Dashboard
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="{{url('/monthly-report')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block">Dashboard</h1>
+    <a href="{{url('/monthly-report')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i> Laporan bulanan</a>
 </div>
 

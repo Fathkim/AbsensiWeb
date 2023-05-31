@@ -1,11 +1,11 @@
 @extends('layouts.main-view')
 
+
 @section('title')
-Monthly Report
+Siswa User
 @endsection
 
-@section('sidebar')
-<!-- Sidebar - Brand -->
+@section('sidebar')<!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
@@ -32,7 +32,7 @@ Monthly Report
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item ">
+    <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-server"></i>
@@ -41,19 +41,20 @@ Monthly Report
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
-                <a class="collapse-item " href="{{url('guru')}}">Guru</a>
-                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
+                <a class="collapse-item" href="{{url('guru')}}">Guru</a>
+                <a class="collapse-item active" href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
     </li>
     @endif
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
     </li>
+
 
     @if (Auth::user()->level != 'admin')
     <!-- Nav Item - Dashboard -->
@@ -63,7 +64,7 @@ Monthly Report
             <span>Profile</span></a>
     </li>
     @endif
-    
+
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
             <i class="fas fa-fw fa-sign-out"></i>
@@ -101,51 +102,61 @@ Monthly Report
 @endsection
 
 @section('content')
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Monthly Report</h1>
-</div>
 
-<!-- Earnings (Annual) Card Example -->
-<div class="row">
-    <div class="col-xl-6 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
-                            Start Date</div>
-                            <input type="text" id="datepicker">
-
-                    </div>
-                    <div class="col-auto  d-none d-sm-inline-block">
-                        <i class="fas fa-clock fa-2x text-success"></i>
-                    </div>
-                </div>
-            </div>
+<a href="{{route('create-user')}}" class="mb-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-user fa-sm text-white-50"></i> Create User</a>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">User Siswa</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>gambar</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mapel</th>
+                        <th>Status</th>
+                        <th>Employed At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mapel</th>
+                        <th>Nomor</th>
+                        <th>Create at</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach ($user as $item)
+                    @if ($item->level == 'siswa')
+                    <tr>
+                        <!-- menggambil gambar yang telah di update -->
+                        <td><img src="{{ asset('storage/images/guru'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
+                                width="100px" alt="Gambar"></td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>San Francisco</td>
+                        <td>{{$item->level}}</td>
+                        <td>{{$item->employe_since}}</td>
+                        <td>
+                            <a href="edit/{{$item->id}}" class="btn btn-info">
+                                <span class="text">info</span>
+                            </a>
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-xl-6 col-md-6 mb-4">
-        <div class="card border-left-danger shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
-                            End Date</div>
-                            <input type="text" id="datepicker">
-                    </div>
-                    <div class="col-auto d-none d-sm-inline-block">
-                        <i class="fas fa-check fa-2x text-danger"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-
-<a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-download fa-sm text-white-50 mx-2"></i>
-    Download File
-</a>
-
 @endsection
