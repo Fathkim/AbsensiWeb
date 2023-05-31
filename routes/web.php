@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 // Auth
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login', 'user');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/edit', 'ProfileController@edit')->name('profile');
+Route::get('/profile/edit', 'ProfileController@edit')->name('profile-edit');
 
 
 // Home | Dashboard
@@ -33,13 +33,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
-<<<<<<< HEAD
 // User
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/create-user', 'UserController@create')->name('create-user');
 Route::post('/data-create', 'UserController@store')->name('data-create');
-=======
->>>>>>> 35d8ab76e7d017a4248a02be2572a1b6decc30dc
 
 
 // Rute-rute yang memerlukan peran admin
