@@ -34,18 +34,6 @@ Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
 
-// user info
-Route::get('/edit/{id}', 'UserController@edit')->name('user-info');
-Route::put('/update/{id}', 'UserController@update')->name('user-update');
-Route::delete('/user/{id}', 'UserController@clear')->name('user-clear');
-
-// mapel
-Route::post('/mapel-create', 'UserController@mapelStore');
-
-// User
-Route::get('/user', 'UserController@index')->name('user');
-Route::get('/create-user', 'UserController@create')->name('create-user');
-Route::post('/data-create', 'UserController@store')->name('data-create');
 
 
 // admin denined
@@ -62,8 +50,11 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/guru', 'GuruController@guru')->name('guru');
     Route::get('/siswa', 'SiswaController@siswa')->name('siswa');
     
-    // User
+    // View User
     Route::get('/create-user', 'UserController@create')->name('create-user');
+    // mapel
+    Route::post('/mapel-create', 'UserController@mapelStore');
+    // User Action
     Route::post('/data-create', 'UserController@store');
 });
 

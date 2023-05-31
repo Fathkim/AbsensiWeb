@@ -55,13 +55,14 @@ Create User
             <span>Laporan Bulanan</span></a>
     </li>
 
-
+    @if (Auth::user()->level != 'admin')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
@@ -105,7 +106,7 @@ Create User
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat User</h1>
 </div>
 <div class="card shadow py-3 px-4">
-    <form action="{{ route('data-create')}}" method="post" id="user-form">
+    <form action="{{ url('data-create')}}" method="post" id="myForm">
         @csrf
         <div class="row">
             <div class="col-md-12 input-group">
