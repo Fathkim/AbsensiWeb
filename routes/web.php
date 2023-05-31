@@ -34,7 +34,12 @@ Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
 
-
+// edit kaprodi user
+Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
+// edit kaprodi user
+Route::get('/guru/edit/{id}', 'GuruController@edit')->name('edit-kaprodi');
+// edit kaprodi user
+Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-kaprodi');
 
 // admin denined
 Route::middleware(['PreventAdminAccess'])->group(function () {

@@ -62,7 +62,7 @@ class KaprodiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

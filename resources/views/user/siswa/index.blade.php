@@ -113,25 +113,26 @@ Siswa User
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-dark text-white">
+            <thead class="bg-dark text-white">
                     <tr>
                         <th>gambar</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>Nama</th>
+                        <th>E-mail</th>
                         <th>Mapel</th>
                         <th>Status</th>
-                        <th>Employed At</th>
-                        <th>Action</th>
+                        <th>Dibuat pada</th>
+                        <th>Pilihan</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>gambar</th>
+                        <th>Nama</th>
+                        <th>E-mail</th>
                         <th>Mapel</th>
-                        <th>Nomor</th>
-                        <th>Create at</th>
-                        <th>Action</th>
+                        <th>Status</th>
+                        <th>Dibuat pada</th>
+                        <th>Pilihan</th>
                     </tr>
                 </tfoot>
                 <tbody>

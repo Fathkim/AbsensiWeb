@@ -130,7 +130,7 @@ Guru User
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Mapel</th>
-                        <th>Nomor</th>
+                        <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
                     </tr>
