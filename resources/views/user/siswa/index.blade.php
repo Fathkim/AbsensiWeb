@@ -46,6 +46,13 @@ Siswa User
             </div>
         </div>
     </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Create User</span></a>
+    </li>
     @endif
 
     <!-- Nav Item - Dashboard -->
@@ -103,10 +110,11 @@ Siswa User
 
 @section('content')
 
-<a href="{{route('create-user')}}" class="mb-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-user fa-sm text-white-50"></i> Create User</a>
+<a href="{{route('user')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+
 <!-- DataTales Example -->
-<div class="card shadow mb-4">
+<div class="card shadow mb-4 mt-5">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">User Siswa</h6>
     </div>

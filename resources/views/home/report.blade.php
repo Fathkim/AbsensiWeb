@@ -46,6 +46,13 @@ Monthly Report
             </div>
         </div>
     </li>
+    
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Create User</span></a>
+    </li>
     @endif
 
     <!-- Nav Item - Dashboard -->
@@ -112,10 +119,10 @@ Monthly Report
         <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
+                    <div class="col mr-5">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                             Start Date</div>
-                            <input type="text" id="datepicker">
+                            <input type="date" class="form-control">
 
                     </div>
                     <div class="col-auto  d-none d-sm-inline-block">
@@ -129,10 +136,11 @@ Monthly Report
         <div class="card border-left-danger shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
+                    <div class="col mr-5">
                         <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
                             End Date</div>
-                            <input type="text" id="datepicker">
+                            <input type="date" class="form-control">
+                            
                     </div>
                     <div class="col-auto d-none d-sm-inline-block">
                         <i class="fas fa-check fa-2x text-danger"></i>

@@ -32,19 +32,26 @@ Create User
 
     @if (Auth::user()->level == 'admin')
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-server"></i>
-            <span>User</span>
+            <span>Pengguna</span>
         </a>
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
                 <a class="collapse-item" href="{{url('guru')}}">Guru</a>
-                <a class="collapse-item active" href="{{url('siswa')}}">Siswa</a>
+                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Create User</span></a>
     </li>
     @endif
 
@@ -151,9 +158,6 @@ Create User
         </div>
     </form>
 </div>
-<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
-
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center  justify-content-between mb-1 mt-5">
@@ -183,9 +187,6 @@ Create User
         </form>
     </div>
 </div>
-
-<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
 
 
 <!-- Content Row -->
