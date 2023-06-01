@@ -34,12 +34,16 @@ Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
 
-// edit kaprodi user
+// edit kaprodi user, update
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
-// edit kaprodi user
+Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');
+Route::delete('/delete-kaprodi/{id}', 'KaprodiController@clear')->name('delete-kaprodi');
+// edit kaprodi user,  update
 Route::get('/guru/edit/{id}', 'GuruController@edit')->name('edit-kaprodi');
-// edit kaprodi user
+Route::put('/guru/update/{id}', 'GuruController@update')->name('update-guru');
+// edit kaprodi user, update
 Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-kaprodi');
+Route::put('/siswa/update/{id}', 'SiswaController@update')->name('update-siswa');
 
 // admin denined
 Route::middleware(['PreventAdminAccess'])->group(function () {

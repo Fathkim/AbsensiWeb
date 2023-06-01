@@ -42,7 +42,7 @@ Create User
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
                 <a class="collapse-item" href="{{url('guru')}}">Guru</a>
-                <a class="collapse-item active" href="{{url('siswa')}}">Siswa</a>
+                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
     </li>
@@ -136,8 +136,8 @@ Create User
                         id="password" aria-describedby="basic-addon1">
                 </div>
                 @error('password')
-                            <p class="text-danger">Password minimal 5</p>
-                        @enderror
+                <p class="text-danger">Password minimal 5</p>
+                @enderror
             </div>
             <div class="col-md-12">
                 <button type="submit" class="form-control btn btn-success" id="submitButton" disabled>Tambah
@@ -146,9 +146,6 @@ Create User
         </div>
     </form>
 </div>
-<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
-
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center  justify-content-between mb-1 mt-5">
@@ -157,30 +154,27 @@ Create User
 
 <div class="row px-2">
 
-<div class="card shadow  col-md-6 py-3 ">
-    <form action="{{url('mapel-create')}}" method="post" id="myForm">
-        @csrf
-        <div class="input-group">
+    <div class="card shadow  col-md-6 py-3 ">
+        <form action="{{url('mapel-create')}}" method="post" id="myForm">
+            @csrf
+            <div class="input-group">
                 <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
                 <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
-    </form>
-</div>
-<div class="card shadow  col-md-6 py-3 ">
-    <form action="{{url('mapel-create')}}" method="post" id="myForm">
-        @csrf
-        <div class="input-group">
+        </form>
+    </div>
+    <div class="card shadow  col-md-6 py-3 ">
+        <form action="{{url('mapel-create')}}" method="post" id="myForm">
+            @csrf
+            <div class="input-group">
                 <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
                 <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
-    </form>
+        </form>
+    </div>
 </div>
-</div>
-
-<a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
 
 
 <!-- Content Row -->
