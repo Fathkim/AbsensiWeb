@@ -41,14 +41,14 @@ class UserController extends Controller
         $data['barcode'] = $number;
 
         User::create($data);
-        return redirect('/create-user');
+        return redirect('/create-user')->with('success', 'Data Added successfully.');
     }
 
     public function mapelStore(Request $request)
     {
         $data = $request->all();
         Mapel::create($data);
-        return redirect('/create-user');
+        return redirect()->route('/create-user');
     }
 
 }

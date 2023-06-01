@@ -102,9 +102,14 @@ Create User
 
 @section('content')
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center  justify-content-between mb-4">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat User</h1>
 </div>
+@if ($message = Session::get('success'))
+<div class="alert alert-success" role="alert">
+    {{ $message }}
+</div>
+@endif
 <div class="card shadow py-3 px-4">
     <form action="{{ url('data-create')}}" method="post" id="myForm">
         @csrf
@@ -136,8 +141,8 @@ Create User
                         id="password" aria-describedby="basic-addon1">
                 </div>
                 @error('password')
-                            <p class="text-danger">Password minimal 5</p>
-                        @enderror
+                <p class="text-danger">Password minimal 5</p>
+                @enderror
             </div>
             <div class="col-md-12">
                 <button type="submit" class="form-control btn btn-success" id="submitButton" disabled>Tambah
@@ -157,26 +162,26 @@ Create User
 
 <div class="row px-2">
 
-<div class="card shadow  col-md-6 py-3 ">
-    <form action="{{url('mapel-create')}}" method="post" id="myForm">
-        @csrf
-        <div class="input-group">
+    <div class="card shadow  col-md-6 py-3 ">
+        <form action="{{url('mapel-create')}}" method="post" id="myForm">
+            @csrf
+            <div class="input-group">
                 <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
                 <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
-    </form>
-</div>
-<div class="card shadow  col-md-6 py-3 ">
-    <form action="{{url('mapel-create')}}" method="post" id="myForm">
-        @csrf
-        <div class="input-group">
+        </form>
+    </div>
+    <div class="card shadow  col-md-6 py-3 ">
+        <form action="{{url('mapel-create')}}" method="post" id="myForm">
+            @csrf
+            <div class="input-group">
                 <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
                 <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 
 <a href="{{route('user')}}" class=" mt-4 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
