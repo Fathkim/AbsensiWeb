@@ -21,4 +21,12 @@ class ProfileController extends Controller
         return view('profile.edit', compact('kelas', 'mapel'));
     }
 
+    public function store(Request $request){
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return redirect('/profile')->with('success', 'Profile berhasil diupdate');
+    }
+
 }

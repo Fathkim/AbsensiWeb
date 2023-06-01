@@ -164,7 +164,7 @@ Profile
                         <div class="d-flex mt-auto">
                             <a href="{{url('/profile/edit', auth()->user()->id)}}" type="button" class="btn btn-success">Edit
                                 Bio</a>
-                            <button type="button" class="btn btn-warning ms-2">Setting</button>
+                            <button type="button" class="btn btn-warning ml-2">Setting</button>
                         </div>
                     </div>
                 </div>
