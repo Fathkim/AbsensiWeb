@@ -112,7 +112,7 @@ class KaprodiController extends Controller
             
             $extension = $request->file('photo')->getClientOriginalExtension();
             $filenameSimpan = $filename.'_'.time().'.'.$extension;
-            $path = $request->file('photo')->storeAs('/public/guru/', $filenameSimpan);
+            $path = $request->file('photo')->storeAs('/public/kaprodi/', $filenameSimpan);
         } else {
             // Jika tidak ada, maka foto akan diisi dengan foto default
             // $kaprodi->photo = 'images/icon-web.png';

@@ -51,6 +51,13 @@ Dashboard
             </div>
         </div>
     </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Create User</span></a>
+    </li>
     @endif
 
     <!-- Nav Item - Dashboard -->

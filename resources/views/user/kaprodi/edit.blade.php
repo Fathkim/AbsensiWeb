@@ -13,7 +13,7 @@ Edit Your User
     <div class="rounded rounded-3 shadow-lg bg-white p-3">
         <p class="fs-4 fw-bold text-secondary text-capitalize mb-5">edit your user</p>
 
-        <form action="{{ route('user-update', $user->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('update-kaprodi', $user->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -23,15 +23,10 @@ Edit Your User
                             width="250px" id="imagePreview">
                     </div>
                     <div class="mb-3">
-                        <input require type="file" class="form-control" id="image-input" name="image"
-                            value="{{$user->image}}">
+                        <input require type="file" class="form-control" id="image-input" name="photo">
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="mb-3 text-center">
-                        <label for="name" class="form-label">kode user</label>
-                        <span class="d-flex justify-content-center">{!!DNS1D::getBarcodeHTML("$user->barcode", 'C128')!!}</span>
-                    </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input require type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
@@ -44,6 +39,14 @@ Edit Your User
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
                         <input require type="password" class="form-control" id="password" name="password">
+                        @if ($errors->any())
+                        <div class="alert p-2 mt-3 alert-danger">
+                                @foreach ($errors->all() as $error)
+                                <span>{{ $error }}</span>
+                                @endforeach
+                        </div>
+                        @endif
+
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4">
@@ -79,12 +82,12 @@ Edit Your User
         </form>
     </div>
 
-    <form action="{{ route('user-clear', $user->id) }}" class="mt-4" method="post">
-            @csrf
-            {{method_field('DELETE')}}
-            <button type="submit" class="btn btn-danger px-5"
-                onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
-            <a href="{{url('/user')}}" class="btn btn-warning px-4">Cancel</a>
-        </form>
+    <form action="{{ route('delete-kaprodi', $user->id) }}" class="mt-4" method="post">
+        @csrf
+        {{method_field('DELETE')}}
+        <button type="submit" class="btn btn-danger px-5"
+            onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
+        <a href="{{url('/kaprodi')}}" class="btn btn-warning px-4">Cancel</a>
+    </form>
 </div>
 @endsection

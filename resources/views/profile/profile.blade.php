@@ -23,10 +23,10 @@ Profile
     </li>
 
     
+    @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
     
-    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -47,17 +47,14 @@ Profile
             </div>
         </div>
     </li>
-
-
     @endif
 
-    <!-- Nav Item - Dashboard -->
+    <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('monthly-report')}}">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Laporan Bulanan</span></a>
+        <a class="nav-link" href="/izin">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
     </li>
-
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
