@@ -184,23 +184,4 @@ Create User
 
 
 <!-- Content Row -->
-<!-- disini kita akan membuat form untuk membuat users dan menghash id tersebut -->
-
-<script>
-const form = document.getElementById('myForm');
-const submitButton = document.getElementById('submitButton');
-
-form.addEventListener('input', function() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const level = document.getElementById('level').value;
-    const password = document.getElementById('password').value;
-
-    if (name && email && level && password.length >= 6) {
-        submitButton.removeAttribute('disabled');
-    } else {
-        submitButton.setAttribute('disabled', 'disabled');
-    }
-});
-</script>
 @endsection
