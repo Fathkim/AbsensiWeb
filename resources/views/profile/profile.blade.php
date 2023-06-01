@@ -131,16 +131,33 @@ Profile
                                     <td>:</td>
                                     <td>{{Auth::user()->email}}</td>
                                 </tr>
+                                @foreach ($data as $row)
                                 <tr class="text-capitalize">
                                     <td>kelas</td>
                                     <td>:</td>
-                                    <td>11 rpl b</td>
+                                    <td>{{$row->kelas->nama_kelas}}</td>
+                                </tr>
+                                <tr class="text-capitalize">
+                                    <td>Alamat</td>
+                                    <td>:</td>
+                                    <td>{{$row->alamat}}</td>
+                                </tr>
+                                <tr class="text-capitalize">
+                                    <td>No Hp</td>
+                                    <td>:</td>
+                                    <td>{{$row->no_hp}}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NISN</td>
                                     <td>:</td>
-                                    <td>0989899</td>
+                                    <td>{{$row->nisn}}</td>
                                 </tr>
+                                <tr class="text-capitalize">
+                                    <td>NIS</td>
+                                    <td>:</td>
+                                    <td>{{$row->nis}}</td>
+                                </tr>     
+                                @endforeach
                             </table>
                         </div>
                         <div class="d-flex mt-auto">
