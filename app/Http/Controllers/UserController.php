@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\User;
 use App\Mapel;
 use Carbon\Carbon;
+
+use Illuminate\Http\Request;
 
 
 class UserController extends Controller
@@ -46,9 +47,9 @@ class UserController extends Controller
 
     public function mapelStore(Request $request)
     {
-        $data = $request->all();
-        Mapel::create($data);
-        return redirect()->route('/create-user');
+
+        Mapel::create($request->all());
+        return redirect('create-user');
     }
 
 }

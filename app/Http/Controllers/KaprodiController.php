@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Mapel;
+use App\Jurusan;
 use App\Kaprodi;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,10 +21,8 @@ class KaprodiController extends Controller
     }
     public function kaprodi()
     {
-        $user = User::all();
         $kaprodi = kaprodi::all();
-        $mapel = Mapel::all();
-        return view('user.kaprodi.index', compact('user', 'mapel', 'kaprodi'));
+        return view('user.kaprodi.index', compact('kaprodi'));
     }
 
     /**
@@ -34,7 +32,17 @@ class KaprodiController extends Controller
      */
     public function create()
     {
-        //
+        $jurusan = Jurusan::all();
+        $user = User::leftJoin('kaprodi', 'users.id','kaprodi.id_user')
+
+        ->where('kaprodi.id_user',null)
+        ->where('level','kaprodi')
+        ->get();
+        $usert = User::where('level', 'kaprodi')->sum('id');
+        $kaprodi = kaprodi::where('id_user', $usert);
+
+
+        return view('user.kaprodi.addbio', compact('kaprodi', 'jurusan', 'user'));
     }
 
     /**
@@ -45,7 +53,29 @@ class KaprodiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Memanggil data user, Memanggil data kaprodi, Memanggil data mapel
+        
+        $data = $request->all();
+        
+        $dataKaprodi = [
+            'id_user' => $data['id_user'],
+            'id_jurusan' => $data['id_jurusan'],
+        ];
+
+        if($request->hasFile('photo')){
+            $destination_path = 'public/kaprodi'; //path tempat penyimpanan (storage/public/images/profile)
+            $image = $request -> file('photo'); //mengambil request column photo
+            $image_name = $image->getClientOriginalName(); //memberikan nama gambar yang akan disimpan di foto
+            $path = $request->file('photo')->storeAs($destination_path, $image_name); //mengirimkan foto ke folder store
+            $dataKaprodi['photo'] = $image_name; //mengirimkan ke database
+        }
+
+        Kaprodi::create($dataKaprodi);
+        
+        
+        // Redirect
+        return redirect()->route('kaprodi')->with('success', 'Data berhasil diupdate');
+        
     }
 
     /**
@@ -67,10 +97,10 @@ class KaprodiController extends Controller
      */
     public function edit($id)
     {
-        $mapel = Mapel::all();
+        $jurusan = Jurusan::all();
         $user = User::find($id);
         $kaprodi = kaprodi::find($id);
-        return view('user.kaprodi.edit', compact('kaprodi', 'mapel', 'user'));
+        return view('user.kaprodi.edit', compact('kaprodi', 'jurusan', 'user'));
     }
 
     /**
@@ -85,42 +115,40 @@ class KaprodiController extends Controller
         // Memanggil data user, Memanggil data kaprodi, Memanggil data mapel
         $user = User::find($id);
         $kaprodi = Kaprodi::find($id);
-        $mapel = Mapel::all();
+        // $mapel = Mapel::all();
         
-        // Mengambil data dari form
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->level = $request->level;
-        
-        // Cek apakah password kosong
-        if ($request->password == null) {
-            // Jika kosong, maka password tetap
-            $user->password = $user->password;
-        } else {
-        // Jika tidak kosong, maka lakukan validation dan password akan di-hash
-            $this->validate($request, [
-                'password' => 'required|min:6'
-            ]);
-            $user->password = bcrypt($request->password);
+        $data = $request->all();
+
+        $dataUser = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'level' => $data['level'],
+            'password' => $data['password']
+        ];
+        // kalo kosong gunakan password lama jika tidak kosong gunakan password baru dan hash password
+        if($data['password'] == null){
+            $dataUser['password'] = $user->password;
+        }else{
+            $dataUser['password'] = bcrypt($data['password']);
         }
 
-        // Cek apakah ada file foto yang diunggah
-        if ($request->hasFile('photo')) {
-            // Jika ada, maka foto akan diupload
-            $photoWithExt = $request->file('photo')->getClientOriginalName();
-            $filename = pathinfo($photoWithExt, PATHINFO_FILENAME);
-            
-            $extension = $request->file('photo')->getClientOriginalExtension();
-            $filenameSimpan = $filename.'_'.time().'.'.$extension;
-            $path = $request->file('photo')->storeAs('/public/kaprodi/', $filenameSimpan);
-        } else {
-            // Jika tidak ada, maka foto akan diisi dengan foto default
-            // $kaprodi->photo = 'images/icon-web.png';
-        }
         
-        // Simpan data
-        $user->save();
-        // $kaprodi->save();
+        $dataKaprodi = [
+            'id_user' => Auth()->user()->id,
+            'id_jurusan' => $data['id_jurusan'],
+        ];
+
+        if($request->hasFile('photo')){
+            $destination_path = 'public/kaprodi'; //path tempat penyimpanan (storage/public/images/profile)
+            $image = $request -> file('photo'); //mengambil request column photo
+            $image_name = $image->getClientOriginalName(); //memberikan nama gambar yang akan disimpan di foto
+            $path = $request->file('photo')->storeAs($destination_path, $image_name); //mengirimkan foto ke folder store
+            $dataKaprodi['photo'] = $image_name; //mengirimkan ke database
+        }
+
+        $user->update($dataUser);
+        // Kaprodi::update($dataKaprodi);
+        
         
         // Redirect
         return redirect()->route('kaprodi')->with('success', 'Data berhasil diupdate');
@@ -136,7 +164,8 @@ class KaprodiController extends Controller
     public function clear($id)
     {
         $kaprodi = kaprodi::find($id);
-        $kaprodi->mapel()->detach();
-        return redirect()->back();
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/kaprodi');
     }
 }

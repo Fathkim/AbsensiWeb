@@ -35,16 +35,20 @@ Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
 
-// edit kaprodi user, update
+// create edit kaprodi user, update
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
 Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');
 Route::delete('/delete-kaprodi/{id}', 'KaprodiController@clear')->name('delete-kaprodi');
+Route::get('/kaprodi-biodata', 'KaprodiController@create')->name('create');
+Route::post('/kaprodi-create-biodata', 'KaprodiController@store')->name('create-kaprodi');
 // edit kaprodi user,  update
 Route::get('/guru/edit/{id}', 'GuruController@edit')->name('edit-kaprodi');
 Route::put('/guru/update/{id}', 'GuruController@update')->name('update-guru');
-// edit kaprodi user, update
+Route::delete('/delete-guru/{id}', 'GuruController@delete')->name('delete-guru');
+// create bio, edit user, update 
 Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-kaprodi');
 Route::put('/siswa/update/{id}', 'SiswaController@update')->name('update-siswa');
+Route::delete('/delete-siswa/{id}', 'SiswaController@delete')->name('delete-siswa');
 
 // admin denined
 Route::middleware(['PreventAdminAccess'])->group(function () {

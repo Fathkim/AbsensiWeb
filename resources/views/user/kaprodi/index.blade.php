@@ -52,7 +52,7 @@ Kaprodi User
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 
@@ -118,7 +118,12 @@ Kaprodi User
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-5">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
+        <div class="d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
+
+<a href="{{url('kaprodi-biodata')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-plus text-white-50 mx-2"></i>Biodata Kaprodi</a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -128,7 +133,7 @@ Kaprodi User
                         <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Mapel</th>
+                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -139,24 +144,25 @@ Kaprodi User
                         <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Mapel</th>
+                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($user as $item)
-                    @if ($item->level == 'kaprodi')
+                    @foreach ($kaprodi as $item)
+                    @if ($item->user->level == 'kaprodi')
                     <tr>
                         <!-- menggambil gambar yang telah di update -->
-                        <td><img src="{{ asset('storage/guru'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
+                        <td>
+                            <img src="{{ asset('storage/kaprodi/'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
                                 width="100px" alt="Gambar"></td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>San Francisco</td>
-                        <td>{{$item->level}}</td>
-                        <td>{{$item->employe_since}}</td>
+                        <td>{{$item->user->name}}</td>
+                        <td>{{$item->user->email}}</td>
+                        <td>{{$item->jurusan->nama_jurusan}}</td>
+                        <td>{{$item->user->level}}</td>
+                        <td>{{$item->user->employe_since}}</td>
                         <td>
                             <a href="kaprodi/edit/{{$item->id}}" class="btn btn-info">
                                 <span class="text">info</span>

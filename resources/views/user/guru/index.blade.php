@@ -51,7 +51,7 @@ Guru User
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 
@@ -156,7 +156,7 @@ Guru User
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>
-                            <a href="edit/{{$item->id}}" class="btn btn-info">
+                            <a href="guru/edit/{{$item->id}}" class="btn btn-info">
                                 <span class="text">info</span>
                             </a>
                         </td>

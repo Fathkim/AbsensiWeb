@@ -22,10 +22,10 @@ Monthly Report
             <span>Dashboard</span></a>
     </li>
 
+    @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -51,7 +51,7 @@ Monthly Report
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 
@@ -65,7 +65,7 @@ Monthly Report
     @if (Auth::user()->level != 'admin')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
