@@ -67,7 +67,10 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mapel = Mapel::all();
+        $user = User::find($id);
+        $guru = Guru::find($id);
+        return view('user.guru.edit', compact('user', 'mapel', 'guru'));
     }
 
     /**
@@ -79,7 +82,49 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Memanggil data user, Memanggil data kaprodi, Memanggil data mapel
+        $user = User::find($id);
+        $guru = Guru::find($id);
+        $mapel = Mapel::all();
+        
+        // Mengambil data dari form
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->level = $request->level;
+        
+        // Cek apakah password kosong
+        if ($request->password == null) {
+            // Jika kosong, maka password tetap
+            $user->password = $user->password;
+        } else {
+        // Jika tidak kosong, maka lakukan validation dan password akan di-hash
+            $this->validate($request, [
+                'password' => 'required|min:6'
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+
+        // Cek apakah ada file foto yang diunggah
+        if ($request->hasFile('photo')) {
+            // Jika ada, maka foto akan diupload
+            $photoWithExt = $request->file('photo')->getClientOriginalName();
+            $filename = pathinfo($photoWithExt, PATHINFO_FILENAME);
+            
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $filenameSimpan = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('photo')->storeAs('/public/guru/', $filenameSimpan);
+        } else {
+            // Jika tidak ada, maka foto akan diisi dengan foto default
+            // $kaprodi->photo = 'images/icon-web.png';
+        }
+        
+        // Simpan data
+        $user->save();
+        // $kaprodi->save();
+        
+        // Redirect
+        return redirect()->route('guru')->with('success', 'Data berhasil diupdate');
+        
     }
 
     /**
@@ -88,8 +133,11 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $Guru = guru::find($id);
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/guru');
     }
 }

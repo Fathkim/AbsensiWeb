@@ -51,7 +51,7 @@ Create User
     <li class="nav-item active">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 
@@ -171,19 +171,11 @@ Create User
             @csrf
             <div class="input-group">
                 <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
-                <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
-                    aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" require name="nama_mapel" id="name" placeholder="mata pelajaran">
             </div>
-        </form>
-    </div>
-    <div class="card shadow  col-md-6 py-3 ">
-        <form action="{{url('mapel-create')}}" method="post" id="myForm">
-            @csrf
-            <div class="input-group">
-                <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
-                <input type="text" class="form-control" require name="name" id="name" placeholder="Username"
-                    aria-label="Username" aria-describedby="basic-addon1">
-            </div>
+
+            <button type="submit" class="form-control mt-4 btn btn-success">Tambah
+                    Data</button>
         </form>
     </div>
 </div>

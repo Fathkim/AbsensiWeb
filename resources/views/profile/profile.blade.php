@@ -51,9 +51,9 @@ Profile
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="/izin">
-            <i class="fas fa-fw fa-info"></i>
-            <span>Izin (udzur)</span></a>
+        <a class="nav-link" href="/monthly-report">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Laporan Bulanan</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->

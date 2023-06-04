@@ -26,11 +26,11 @@ Dashboard
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-
+    
+    @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -56,7 +56,7 @@ Dashboard
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 

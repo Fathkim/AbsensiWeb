@@ -51,7 +51,7 @@ Siswa User
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Create User</span></a>
+            <span>Buat User</span></a>
     </li>
     @endif
 

@@ -13,13 +13,13 @@ Edit Your User
     <div class="rounded rounded-3 shadow-lg bg-white p-3">
         <p class="fs-4 fw-bold text-secondary text-capitalize mb-5">edit your user</p>
 
-        <form action="{{ route('update-kaprodi', $user->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('update-kaprodi', $kaprodi->user->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
                 <div class="col-md-6">
                     <div class="justify-content-center d-flex">
-                        <img src="{{ asset('images/icon-web.png') }}" class="rounded rounded-3 img-thumbnail mb-3"
+                        <img src="{{ asset('storage/kaprodi/'.$kaprodi->photo) }}" class="rounded rounded-3 img-thumbnail mb-3"
                             width="250px" id="imagePreview">
                     </div>
                     <div class="mb-3">
@@ -29,12 +29,12 @@ Edit Your User
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input require type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
+                        <input require type="text" class="form-control" id="name" name="name" value="{{$kaprodi->user->name}}">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input require type="email" class="form-control" id="email" name="email"
-                            value="{{$user->email}}">
+                            value="{{$kaprodi->user->email}}">
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
@@ -50,27 +50,26 @@ Edit Your User
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <div class="input-group">
-                                <label class="input-group-text" for="inputGroupSelect01">level</label>
-                                <select class="form-select" require id="inputGroupSelect01" name="level">
-                                    <option value="{{$user->level}}">{{$user->level}}</option>
+
+                                <label for="inputGroupSelect01">level</label>
+                                <select class="form-control" require id="inputGroupSelect01" name="level">
+                                    <option value="{{$kaprodi->user->level}}">{{$kaprodi->user->level}}</option>
                                     <option value="guru">guru</option>
                                     <option value="siswa">siswa</option>
                                     <option value="kaprodi">kaprodi</option>
                                 </select>
-                            </div>
                         </div>
+
                         <div class="col-md-6 mb-4">
-                            <div class="input-group">
-                                <label class="input-group-text" for="inputGroupSelect01">Mapel</label>
-                                <select class="form-select" require id="inputGroupSelect01" name=" ">
-                                    <option value="0">Choose...</option>
-                                    @foreach ($mapel as $item)
-                                    <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
+                                <label for="name" for="inputGroupSelect01">Jurusan</label>
+                                <select class="form-control" require id="inputGroupSelect01" name="id_jurusan">
+                                    <option value="{{$kaprodi->jurusan->nama_jurusan}}">{{$kaprodi->jurusan->nama_jurusan}}</option>
+                                    @foreach ($jurusan as $item)
+                                    <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
                                     @endforeach
                                 </select>
-                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -82,11 +81,11 @@ Edit Your User
         </form>
     </div>
 
-    <form action="{{ route('delete-kaprodi', $user->id) }}" class="mt-4" method="post">
+    <form action="{{ route('delete-kaprodi', $kaprodi->user->id) }}" class="mt-4" method="post">
         @csrf
         {{method_field('DELETE')}}
         <button type="submit" class="btn btn-danger px-5"
-            onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
+            onclick="return confirm('Apakah anda akan menghapus {{$kaprodi->user->name}} ?');">Hapus</button>
         <a href="{{url('/kaprodi')}}" class="btn btn-warning px-4">Cancel</a>
     </form>
 </div>
