@@ -24,7 +24,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile');
-Route::post('/profile/send', 'ProfileController@store')->name('profile');
+Route::put('/profile/send/{id}', 'ProfileController@update')->name('profile');
 
 
 // Home | Dashboard
