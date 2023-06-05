@@ -17,24 +17,19 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        $data = Siswa::all();
+        $data = Siswa::where('id_user', auth()->user()->id)->get();
         return view('profile.profile', compact('data'));
     }
 
-    public function edit(){
+    public function edit($id){
+        $siswa = Siswa::find($id);
         $kelas = Kelas::all();
-        $mapel = Mapel::all();
-        return view('profile.edit', compact('kelas', 'mapel'));
+        return view('profile.edit', compact('kelas', 'siswa'));
     }
 
-    public function store(Request $request){
-        $data = $request->all();
-        Siswa::create($data);
-        $user = User::find(auth()->user()->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-
+    public function update(Request $request, $id){
+        $siswa = Siswa::find($id);
+        $siswa->update($request->all());
         return redirect('/profile')->with('success', 'Profile berhasil diupdate');
     }
 

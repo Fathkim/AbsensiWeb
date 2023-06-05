@@ -154,14 +154,14 @@ Profile
                                     <td>:</td>
                                     <td>{{$row->nis}}</td>
                                 </tr>     
-                                @endforeach
                             </table>
                         </div>
                         <div class="d-flex mt-auto">
-                            <a href="{{url('/profile/edit', auth()->user()->id)}}" type="button" class="btn btn-success">Edit
+                            <a href="{{url('/profile/edit', $row->id)}}" type="button" class="btn btn-success">Edit
                                 Bio</a>
                             <button type="button" class="btn btn-warning ml-2">Setting</button>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

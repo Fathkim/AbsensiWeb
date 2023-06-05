@@ -138,36 +138,42 @@ Profile
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                                     Your Identiti Card</div>
-                                <form action="{{url('/profile/send')}}" method="POST">
+                                <form action="{{url('/profile/send', $siswa->id)}}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
                                         <input type="text" class="form-control" readonly id="nama" value="{{Auth::user()->name}}">
+                                    </div>
+                                    <div class="form-group">
                                         <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email" value="{{auth()->user()->email}}">
+                                        <input type="email" readonly class="form-control" name="" id="email" value="{{auth()->user()->email}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="kelas">Kelas</label>
-                                        <input type="text" class="form-control" name="" id="kelas" value="XII IPA">
+                                        @foreach ($kelas as $item)
+                                        <input type="text" name="id_kelas" hidden value="{{$item->id}}">
+                                        <input type="text" readonly class="form-control" name="" value="{{$item->nama_kelas}}">
+                                        @endforeach
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>
-                                        <input type="text" class="form-control" name="alamat" id="nisn" value="Dayeuh">
+                                        <input type="text" class="form-control" name="alamat" id="nisn" value="{{$siswa->alamat}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="no_hp">No Hp</label>
-                                        <input type="number" class="form-control" name="no_hp" id="nisn" value="1234567890">
+                                        <input type="number" class="form-control" name="no_hp" id="nisn" value="{{$siswa->no_hp}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="nisn">NIS</label>
-                                        <input type="text" class="form-control" name="nis" id="nisn" value="1234567890">
+                                        <input type="text" class="form-control" name="nis" id="nisn" value="{{$siswa->nis}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="nisn">NISN</label>
-                                        <input type="text" class="form-control" name="nisn" id="nisn" value="1234567890">
+                                        <input type="text" class="form-control" name="nisn" id="nisn" value="{{$siswa->nisn}}">
                                     </div>
                                     <div class="d-flex mt-4">
                                         <button type="submit" class="btn btn-success">Confirm</button>
