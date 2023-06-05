@@ -110,7 +110,7 @@ Create User
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat User</h1>
+    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block">Buat User</h1>
 </div>
 @if ($message = Session::get('success'))
 <div class="alert alert-success" role="alert">
@@ -160,25 +160,56 @@ Create User
 </div>
 
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center  justify-content-between mb-1 mt-5">
-    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block d-none">Buat Mapel</h1>
-</div>
-
-<div class="row px-2">
-
-    <div class="card shadow  col-md-6 py-3 ">
-        <form action="{{url('mapel-create')}}" method="post" id="myForm">
-            @csrf
-            <div class="input-group">
-                <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
-                <input type="text" class="form-control" require name="nama_mapel" id="name" placeholder="mata pelajaran">
-            </div>
-
-            <button type="submit" class="form-control mt-4 btn btn-success">Tambah
-                    Data</button>
-        </form>
+<div class="row mb-1 ml-2">
+    
+    <div class="row px-2">
+        <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
+            <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Mapel</h1>
+        </div>
+    
+        <div class="card shadow col-md-11 py-3 ">
+            <form action="{{url('mapel-create')}}" method="post" id="myForm">
+                @csrf
+                <div class="input-group">
+                    <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
+                    <input type="text" class="form-control" require name="nama_mapel" id="name" placeholder="mata pelajaran">
+                </div>
+    
+                <button type="submit" class="form-control mt-4 btn btn-success">Tambah
+                        Data</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row px-2">
+        <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
+            <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Kelas</h1>
+        </div>
+    
+        <div class="card shadow col-md-11 py-3 ">
+            <form action="{{url('kelas-create')}}" method="post" id="myForm">
+                @csrf
+                <div class="input-group">
+                    <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Kelas</span>
+                    <input type="text" class="form-control" require name="nama_kelas" id="name" placeholder="">
+                </div>
+                <div class="input-group mt-1">
+                    <span class="input-group-text col-md-3 form-control" id="basic-addon1">Jurusan:</span>
+                    <select name="id_jurusan" require class="form-control form-select" id="level">
+                        @foreach ($jurusan as $row)
+                        <option>Choose...</option>
+                        <option value="{{$row->id}}">{{$row->nama_jurusan}}</option>
+                        @endforeach
+                    </select>
+                </div>
+    
+                <button type="submit" class="form-control mt-4 btn btn-success">Tambah
+                        Data</button>
+            </form>
+        </div>
     </div>
 </div>
+
 
 
 <!-- Content Row -->
