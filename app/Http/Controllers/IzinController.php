@@ -17,7 +17,12 @@ class IzinController extends Controller
     }
 
     public function store(Request $request){
-        Izin::create($request -> all());
+        $data = Izin::create($request -> all());
+        if($request->hasFile('bukti_foto')){
+            $request->file('bukti_foto')->move('buktiizin/',$request->file('bukti_foto')->getClientOriginalName());
+            $data->bukti_foto = $request->file('bukti_foto')->getClientOriginalName();
+            $data->save();
+        }
         return redirect('/home');
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Jurusan;
+use App\Kelas;
 use App\User;
 use App\Mapel;
 use Carbon\Carbon;
@@ -17,7 +19,8 @@ class UserController extends Controller
     }
     public function create() {
         $user = User::all();
-        return view('user.create', compact('user'));
+        $jurusan = Jurusan::all();
+        return view('user.create', compact('user','jurusan'));
     }
 
     public function store()
@@ -49,6 +52,12 @@ class UserController extends Controller
     {
 
         Mapel::create($request->all());
+        return redirect('create-user');
+    }
+
+    public function kelasStore(Request $request)
+    {
+        Kelas::create($request->all());
         return redirect('create-user');
     }
 
