@@ -35,18 +35,27 @@ Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
 
-// create edit kaprodi user, update
+// kaprodi view
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
+Route::get('/kaprodi/show/{id}', 'KaprodiController@show')->name('show-kaprodi');
+
+// Kaprodi Route Action Form
 Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');
 Route::delete('/delete-kaprodi/{id}', 'KaprodiController@clear')->name('delete-kaprodi');
 Route::get('/kaprodi-biodata', 'KaprodiController@create')->name('create');
 Route::post('/kaprodi-create-biodata', 'KaprodiController@store')->name('create-kaprodi');
-// edit kaprodi user,  update
+
+// Guru View
 Route::get('/guru/edit/{id}', 'GuruController@edit')->name('edit-kaprodi');
+
+// Guru Route Action Form
 Route::put('/guru/update/{id}', 'GuruController@update')->name('update-guru');
 Route::delete('/delete-guru/{id}', 'GuruController@delete')->name('delete-guru');
-// create bio, edit user, update 
+
+// Siswa View
 Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-kaprodi');
+
+// Siswa Route Action Form
 Route::put('/siswa/update/{id}', 'SiswaController@update')->name('update-siswa');
 Route::delete('/delete-siswa/{id}', 'SiswaController@delete')->name('delete-siswa');
 

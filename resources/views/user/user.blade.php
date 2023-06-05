@@ -121,7 +121,7 @@ Kaprodi User
         <div class="d-flex justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
 
-<a href="{{url('kaprodi-biodata')}}" class="d-sm-inline-block btn btn-sm btn-success shadow-sm">
+<a href="{{url('kaprodi-biodata')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
     <i class="fas fa-plus text-white-50 mx-2"></i>Biodata Kaprodi</a>
         </div>
     </div>
@@ -130,6 +130,7 @@ Kaprodi User
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
             <thead class="bg-dark text-white">
                     <tr>
+                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Jurusan</th>
@@ -140,6 +141,7 @@ Kaprodi User
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Jurusan</th>
@@ -149,17 +151,20 @@ Kaprodi User
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($user as $item)
-                    @if($item->level == 'kaprodi')
+                    @foreach ($user as $item)     
+                     @if ($item->level == 'guru')
                     <tr>
                         <!-- menggambil gambar yang telah di update -->
+                        <td>
+                            <img src="{{ asset('storage/kaprodi/'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
+                                width="100px" alt="Gambar"></td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>jhasd</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>
-                            <a href="{{url('kaprodi/show', $item->id)}}" class="btn btn-info">
+                            <a href="kaprodi/edit/{{$item->id}}" class="btn btn-info">
                                 <span class="text">info</span>
                             </a>
                         </td>
