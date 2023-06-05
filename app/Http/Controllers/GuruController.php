@@ -45,7 +45,25 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mapel = Mapel::all();
+        $data = $request->all();
+
+        $dataGuru = [
+            'id_user' =>  $data['id_user'],
+            'id_mapel' =>  $data['id_mapel'],
+            'nomor' =>  $data['nomor'],
+        ];
+
+        if($request->hasFile('photo')){
+            $destination_path = 'public/guru'; //path tempat penyimpanan (storage/public/images/profile)
+            $image = $request -> file('photo'); //mengambil request column photo
+            $image_name = $image->getClientOriginalName(); //memberikan nama gambar yang akan disimpan di foto
+            $path = $request->file('photo')->storeAs($destination_path, $image_name); //mengirimkan foto ke folder store
+            $dataGuru['photo'] = $image_name; //mengirimkan ke database
+        }
+
+        Guru::create($dataGuru);
+        return redirect()->route('guru')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -56,7 +74,10 @@ class GuruController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $guru = Guru::where('id_user',$id)->get()->all();
+        $mapel = Mapel::all();
+        return view('user.guru.detail', compact('user', 'mapel', 'guru'));
     }
 
     /**

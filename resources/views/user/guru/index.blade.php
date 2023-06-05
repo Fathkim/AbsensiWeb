@@ -123,7 +123,6 @@ Guru User
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-dark text-white">
                     <tr>
-                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Mapel</th>
@@ -134,7 +133,6 @@ Guru User
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Mapel</th>
@@ -147,16 +145,13 @@ Guru User
                     @foreach ($user as $item)
                     @if ($item->level == 'guru')
                     <tr>
-                        <!-- menggambil gambar yang telah di update -->
-                        <td><img src="{{ asset('storage/images/guru'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
-                                width="100px" alt="Gambar"></td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>San Francisco</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>
-                            <a href="guru/edit/{{$item->id}}" class="btn btn-info">
+                            <a href="guru/show/{{$item->id}}" class="btn btn-info">
                                 <span class="text">info</span>
                             </a>
                         </td>

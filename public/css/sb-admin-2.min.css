@@ -10536,6 +10536,18 @@ a:focus {
     white-space: nowrap
 }
 
+/* Target the increment/decrement buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the increment/decrement buttons */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
     background-color: #eaecf4
 }

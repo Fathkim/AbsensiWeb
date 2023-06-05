@@ -28,13 +28,13 @@ detail
                     <tr>
                         <th class="text-dark text-uppercase">Lavel</th>
                         <td>:</td>
-                        <td class="badge badge-primary py-2 my-2 px-4">{{$user->level}}</td>
+                        <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>
                     <tr>
                         <th class="text-dark text-uppercase">Status Biodata</th>
                         <td>:</td>
                         <td class="p-0">
-                            @if(!$kaprodi)
+                            @if(!$guru)
                             <span class="badge badge-danger py-2 my-2 px-4">
                                 Belum Ada Biodata
                             </span>
@@ -45,39 +45,39 @@ detail
                             @endif
                         </td>
                     </tr>
-                    @foreach ($kaprodi as $item)
+                    @foreach ($guru as $item)
                     <tr>
                         <th class="text-dark text-uppercase">Jurusan</th>
                         <td>:</td>
                         <td>
-                            {{$item->jurusan->nama_jurusan}}
+                            {{$item->mapel->nama_mapel}}
                         </td>
                     </tr>
                     <tr>
                         <th class="text-dark text-uppercase">Photo</th>
                         <td>:</td>
                         <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/kaprodi/'.$item->photo) }}"
-                                width="200px" />
+                            <img class="img-thumbnail" src="{{ asset('/storage/guru/'.$item->photo) }}"
+                            width="200px" />
                         </td>
                     </tr>
                     @endforeach
                 </table>
             </div>
-            @if($kaprodi)
-            <a type="submit" href="/kaprodi" class="btn btn-warning shadow">Back</a>
+            @if($guru)
+            <a type="submit" href="/guru" class="btn btn-warning shadow">Back</a>
             @endif
-            @if(!$kaprodi)
+            @if(!$guru)
             <!-- maka tampilkan form untuk mengisi biodata -->
-            <form action="{{route('create-kaprodi', $user->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('create-guru', $user->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Jurusan</label>
-                        <select class="form-control" require id="inputGroupSelect01" name="id_jurusan">
+                        <select class="form-control" require id="inputGroupSelect01" name="id_mapel">
                             <option value="0">Choose...</option>
-                            @foreach ($jurusan as $item)
-                            <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
+                            @foreach ($mapel as $item)
+                            <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -85,13 +85,19 @@ detail
                         <label for="name" for="inputGroupSelect01">Photo</label>
                         <div class="mb-3">
                             <input type="file" class="form-control p-0" id="image-input" name="photo">
-                            <input type="number" class="form-control p-0" id="image-input" name="id_user"
+                            <input type="number" class="form-control" id="image-input" name="id_user"
                                 value="{{$user->id}}" hidden>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="name" for="inputGroupSelect01">Nomor</label>
+                        <div class="mb-3">
+                            <input type="number" class="form-control" name="nomor">
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary shadow">Create Biodata</button>
-                <a type="submit" href="/kaprodi" class="btn btn-warning shadow">Back</a>
+                <a type="submit" href="/guru" class="btn btn-warning shadow">Back</a>
             </form>
             @endif
         </div>
