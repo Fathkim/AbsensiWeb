@@ -2,7 +2,7 @@
 
 
 @section('title')
-Guru User
+Kaprodi User
 @endsection
 
 @section('sidebar')<!-- Sidebar - Brand -->
@@ -24,7 +24,7 @@ Guru User
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-    
+
     @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -40,12 +40,13 @@ Guru User
         </a>
         <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{url('/kaprodi')}}">Kaprodi</a>
-                <a class="collapse-item active" href="{{url('guru')}}">Guru</a>
-                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
+                <a class="collapse-item active" href="{{url('/kaprodi')}}">Kaprodi</a>
+                <a class="collapse-item" href="{{url('guru')}}">Guru</a>
+                <a class="collapse-item " href="{{url('siswa')}}">Siswa</a>
             </div>
         </div>
     </li>
+
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
@@ -106,6 +107,7 @@ Guru User
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
+
 @endsection
 
 @section('content')
@@ -116,15 +118,22 @@ Guru User
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-5">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User Guru</h6>
+        <div class="d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
+
+<a href="{{url('kaprodi-biodata')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-plus text-white-50 mx-2"></i>Biodata Kaprodi</a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-dark text-white">
+            <thead class="bg-dark text-white">
                     <tr>
+                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
+                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -132,23 +141,30 @@ Guru User
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>gambar</th>
                         <th>Nama</th>
                         <th>E-mail</th>
+                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($user as $item)
-                    @if ($item->level == 'guru')
+                    @foreach ($user as $item)     
+                     @if ($item->level == 'guru')
                     <tr>
+                        <!-- menggambil gambar yang telah di update -->
+                        <td>
+                            <img src="{{ asset('storage/kaprodi/'.$item->photo) }}" class="rounded rounded-3 img-thumbnail"
+                                width="100px" alt="Gambar"></td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
+                        <td>jhasd</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>
-                            <a href="guru/show/{{$item->id}}" class="btn btn-info">
+                            <a href="kaprodi/edit/{{$item->id}}" class="btn btn-info">
                                 <span class="text">info</span>
                             </a>
                         </td>

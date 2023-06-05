@@ -47,13 +47,27 @@ Profile
             </div>
         </div>
     </li>
-    @endif
-
+    
     <!-- Nav Item - Charts -->
     <li class="nav-item">
         <a class="nav-link" href="/monthly-report">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Buat User</span></a>
+    </li>
+    @endif
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="/izin">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->

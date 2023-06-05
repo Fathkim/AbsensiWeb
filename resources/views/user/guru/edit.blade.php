@@ -43,9 +43,9 @@ Edit Your User
                         <input require type="password" class="form-control" id="password" name="password">
                         @if ($errors->any())
                         <div class="alert p-2 mt-3 alert-danger">
-                                @foreach ($errors->all() as $error)
-                                <span>{{ $error }}</span>
-                                @endforeach
+                            @foreach ($errors->all() as $error)
+                            <span>{{ $error }}</span>
+                            @endforeach
                         </div>
                         @endif
                     </div>
@@ -84,11 +84,11 @@ Edit Your User
     </div>
 
     <form action="{{ route('delete-guru', $user->id) }}" class="mt-4" method="post">
-            @csrf
-            {{method_field('DELETE')}}
-            <button type="submit" class="btn btn-danger px-5"
-                onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
-            <a href="{{url('/guru')}}" class="btn btn-warning px-4">Cancel</a>
-        </form>
+        @csrf
+        {{method_field('DELETE')}}
+        <button type="submit" class="btn btn-danger px-5"
+            onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
+        <a href="{{url('/guru')}}" class="btn btn-warning px-4">Cancel</a>
+    </form>
 </div>
 @endsection

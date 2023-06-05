@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Jurusan;
 use App\Kaprodi;
+
 use Illuminate\Support\Facades\Validator;
 
 class KaprodiController extends Controller
@@ -21,8 +22,8 @@ class KaprodiController extends Controller
     }
     public function kaprodi()
     {
-        $kaprodi = kaprodi::all();
-        return view('user.kaprodi.index', compact('kaprodi'));
+        $user = User::all();
+        return view('user.kaprodi.index', compact('user'));
     }
 
     /**
@@ -33,13 +34,13 @@ class KaprodiController extends Controller
     public function create()
     {
         $jurusan = Jurusan::all();
-        $user = User::leftJoin('kaprodi', 'users.id','kaprodi.id_user')
+        // $user = User::leftJoin('kaprodi', 'users.id','kaprodi.id_user')
 
-        ->where('kaprodi.id_user',null)
-        ->where('level','kaprodi')
-        ->get();
-        $usert = User::where('level', 'kaprodi')->sum('id');
-        $kaprodi = kaprodi::where('id_user', $usert);
+        // ->where('kaprodi.id_user',null)
+        // ->where('level','kaprodi')
+        // ->get();
+        // $usert = User::where('level', 'kaprodi')->sum('id');
+        // $kaprodi = kaprodi::where('id_user', $usert);
 
 
         return view('user.kaprodi.addbio', compact('kaprodi', 'jurusan', 'user'));
@@ -54,7 +55,7 @@ class KaprodiController extends Controller
     public function store(Request $request)
     {
         // Memanggil data user, Memanggil data kaprodi, Memanggil data mapel
-        
+        $jurusan = Jurusan::all();
         $data = $request->all();
         
         $dataKaprodi = [
@@ -72,7 +73,6 @@ class KaprodiController extends Controller
 
         Kaprodi::create($dataKaprodi);
         
-        
         // Redirect
         return redirect()->route('kaprodi')->with('success', 'Data berhasil diupdate');
         
@@ -86,7 +86,11 @@ class KaprodiController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $kaprodi = Kaprodi::where('id_user',$id)->get()->all();
+        $jurusan = Jurusan::all();
+        return view('user.kaprodi.detail', compact('kaprodi', 'user', 'jurusan'));
+        
     }
 
     /**

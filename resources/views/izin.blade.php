@@ -46,6 +46,45 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            @if (Auth::user()->level == 'admin')
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Admin
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
+            aria-controls="usercollaps">
+            <i class="fas fa-fw fa-server"></i>
+            <span>Pengguna</span>
+        </a>
+        <div id="usercollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{url('kaprodi')}}">Kaprodi</a>
+                <a class="collapse-item" href="{{url('guru')}}">Guru</a>
+                <a class="collapse-item" href="{{url('siswa')}}">Siswa</a>
+            </div>
+        </div>
+    </li>
+    
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="/monthly-report">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Laporan Bulanan</span></a>
+    </li>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Buat User</span></a>
+    </li>
+    @endif
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
