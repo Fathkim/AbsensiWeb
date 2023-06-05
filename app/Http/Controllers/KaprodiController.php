@@ -34,15 +34,6 @@ class KaprodiController extends Controller
     public function create()
     {
         $jurusan = Jurusan::all();
-        // $user = User::leftJoin('kaprodi', 'users.id','kaprodi.id_user')
-
-        // ->where('kaprodi.id_user',null)
-        // ->where('level','kaprodi')
-        // ->get();
-        // $usert = User::where('level', 'kaprodi')->sum('id');
-        // $kaprodi = kaprodi::where('id_user', $usert);
-
-
         return view('user.kaprodi.addbio', compact('kaprodi', 'jurusan', 'user'));
     }
 
