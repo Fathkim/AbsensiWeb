@@ -5,7 +5,8 @@
 Kaprodi User
 @endsection
 
-@section('sidebar')<!-- Sidebar - Brand -->
+@section('sidebar')
+<!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
@@ -118,21 +119,15 @@ Kaprodi User
 <!-- DataTales Example -->
 <div class="card shadow mb-4 mt-5">
     <div class="card-header py-3">
-        <div class="d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
-
-<a href="{{url('kaprodi-biodata')}}" class="d-sm-inline-block btn btn-sm btn-success shadow-sm">
-    <i class="fas fa-plus text-white-50 mx-2"></i>Biodata Kaprodi</a>
-        </div>
+        <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-            <thead class="bg-dark text-white">
+                <thead class="bg-dark text-white">
                     <tr>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -142,7 +137,6 @@ Kaprodi User
                     <tr>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Jurusan</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -155,7 +149,6 @@ Kaprodi User
                         <!-- menggambil gambar yang telah di update -->
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
-                        <td>jhasd</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>

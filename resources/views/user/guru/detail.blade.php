@@ -47,10 +47,17 @@ detail
                     </tr>
                     @foreach ($guru as $item)
                     <tr>
-                        <th class="text-dark text-uppercase">Jurusan</th>
+                        <th class="text-dark text-uppercase">Mapel</th>
                         <td>:</td>
                         <td>
                             {{$item->mapel->nama_mapel}}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th class="text-dark text-uppercase">Nomor</th>
+                        <td>:</td>
+                        <td>
+                            {{$item->nomor}}
                         </td>
                     </tr>
                     <tr>

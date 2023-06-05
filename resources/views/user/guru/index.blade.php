@@ -125,7 +125,6 @@ Guru User
                     <tr>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Mapel</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -135,7 +134,6 @@ Guru User
                     <tr>
                         <th>Nama</th>
                         <th>E-mail</th>
-                        <th>Mapel</th>
                         <th>Status</th>
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
@@ -147,7 +145,6 @@ Guru User
                     <tr>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
-                        <td>San Francisco</td>
                         <td>{{$item->level}}</td>
                         <td>{{$item->employe_since}}</td>
                         <td>
