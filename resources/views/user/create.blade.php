@@ -5,33 +5,30 @@ Create User
 @endsection
 
 @section('sidebar')
-<!-- Sidebar - Brand -->
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
     </a>
 
-    <!-- Divider -->
+
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
+    @if (Auth::user()->level == 'admin')
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
+
     <div class="sidebar-heading">
         Admin
     </div>
 
-    @if (Auth::user()->level == 'admin')
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
@@ -47,7 +44,6 @@ Create User
         </div>
     </li>
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
@@ -55,21 +51,35 @@ Create User
     </li>
     @endif
 
-    <!-- Nav Item - Dashboard -->
+    @if(Auth::user()->level == 'guru' || Auth::user()->level == 'kaprodi')
+    <li class="nav-item active">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Buat Akademik</span></a>
+    </li>
+    @endif
+
+    @if (Auth::user()->level != 'siswa')
     <li class="nav-item">
         <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
     </li>
+    @endif
 
-    @if (Auth::user()->level != 'admin')
-    <!-- Nav Item - Dashboard -->
+    @if(Auth::user()->level == 'siswa')
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+    @endif
+
+    <li class="nav-item">
+        <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
@@ -109,6 +119,7 @@ Create User
 
 @section('content')
 <!-- Page Heading -->
+@if(Auth::user()->level == 'admin')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block">Buat User</h1>
 </div>
@@ -117,6 +128,7 @@ Create User
     {{ $message }}
 </div>
 @endif
+
 <div class="card shadow py-3 px-4">
     <form action="{{ url('data-create')}}" method="post" id="myForm">
         @csrf
@@ -204,9 +216,13 @@ Create User
                     <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
                     <input type="text" class="form-control" require name="nama_mapel" id="name"
                         placeholder="mata pelajaran">
+                    <input type="text" class="form-control" require name="nama_mapel" id="name"
+                        placeholder="mata pelajaran">
                 </div>
 
+
                 <button type="submit" class="form-control mt-4 btn btn-success">Tambah
+                    Data</button>
                     Data</button>
             </form>
         </div>
@@ -234,7 +250,9 @@ Create User
                     </select>
                 </div>
 
+
                 <button type="submit" class="form-control mt-4 btn btn-success">Tambah
+                    Data</button>
                     Data</button>
             </form>
         </div>

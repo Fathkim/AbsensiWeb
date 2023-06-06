@@ -20,13 +20,15 @@ Edit Your User
             @method('PUT')
             <div class="row">
                 <div class="col-md-6">
+                    @foreach ($guru as $item)
                     <div class="justify-content-center d-flex">
-                        <img src="{{ asset('images/icon-web.png') }}" class="rounded rounded-3 img-thumbnail mb-3"
-                            width="250px" id="imagePreview">
+                        <img src="{{ asset('/storage/guru/'.$item->photo) }}"
+                            class="rounded rounded-3 img-thumbnail mb-3" width="210px" id="preview-selected-image">
                     </div>
                     <div class="mb-3">
-                        <input require type="file" class="form-control" id="image-input" name="photo">
+                        <input require type="file" accept="image/*" onchange="previewImage(event);" class="form-control" id="image-input" name="photo">
                     </div>
+                    @endforeach
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -51,26 +53,24 @@ Edit Your User
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <div class="input-group">
-                                <label class="input-group-text" for="inputGroupSelect01">level</label>
-                                <select class="form-select" require id="inputGroupSelect01" name="level">
-                                    <option value="{{$user->level}}">{{$user->level}}</option>
-                                    <option value="guru">guru</option>
-                                    <option value="siswa">siswa</option>
-                                    <option value="kaprodi">kaprodi</option>
-                                </select>
-                            </div>
+
+                            <label for="inputGroupSelect01">level</label>
+                            <select class="form-select form-control" require id="inputGroupSelect01" name="level">
+                                <option value="{{$user->level}}">{{$user->level}}</option>
+                                <option value="guru">guru</option>
+                                <option value="siswa">siswa</option>
+                                <option value="kaprodi">kaprodi</option>
+                            </select>
+
                         </div>
                         <div class="col-md-6 mb-4">
-                            <div class="input-group">
-                                <label class="input-group-text" for="inputGroupSelect01">Mapel</label>
-                                <select class="form-select" require id="inputGroupSelect01" name=" ">
-                                    <option value="0">Choose...</option>
-                                    @foreach ($mapel as $item)
-                                    <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+
+                            <label for="inputGroupSelect01">mapel</label>
+                            <select class="form-select form-control" require id="inputGroupSelect01" name="id_mapel">
+                                @foreach ($mapel as $item)
+                                <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -91,4 +91,18 @@ Edit Your User
         <a href="{{url('/guru')}}" class="btn btn-warning px-4">Cancel</a>
     </form>
 </div>
+
+
+<script>
+const previewImage = (event) => {
+    const imageFiles = event.target.files;
+    const imageFilesLength = imageFiles.length;
+    if (imageFilesLength > 0) {
+        const imageSrc = URL.createObjectURL(imageFiles[0]);
+        const imagePreviewElement = document.querySelector("#preview-selected-image");
+        imagePreviewElement.src = imageSrc;
+        imagePreviewElement.style.display = "block";
+    }
+};
+</script>
 @endsection

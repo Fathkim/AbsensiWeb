@@ -1,19 +1,40 @@
 @extends('layouts.main-view')
 
 @section('title')
-detail
+Detail {{$user->name}}
 @endsection
 
 @section('content')
 <!-- content -->
 <div class="container">
     <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-        <div class="card-header">
-            <h3 class="text-dark text-uppercase">{{$user->name}}</h3>
+        <div class="card-header d-flex align-items-center">
+            <p class="m-0">Detail User</p>
+            <div class="ml-auto">
+                @if(!$kaprodi)
+                <span class="badge badge-danger py-2 my-2 px-4">
+                    Belum Ada Biodata
+                </span>
+                @else
+                <span class="badge badge-success py-2 my-2 px-4">
+                    Sudah Ada Biodata
+                </span>
+                @endif
+            </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive mb-3">
                 <table class="table table-borderless">
+                    @foreach ($kaprodi as $item)
+                    <tr>
+                        <th class="text-dark text-uppercase">Photo</th>
+                        <td>:</td>
+                        <td>
+                            <img class="img-thumbnail" src="{{ asset('/storage/kaprodi/'.$item->photo) }}"
+                                width="200px" />
+                        </td>
+                    </tr>
+                    @endforeach
                     <tr>
                         <th class="text-dark text-uppercase">Nama</th>
                         <td>:</td>
@@ -30,21 +51,6 @@ detail
                         <td>:</td>
                         <td class="badge badge-primary py-2 my-2 px-4">{{$user->level}}</td>
                     </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Status Biodata</th>
-                        <td>:</td>
-                        <td class="p-0">
-                            @if(!$kaprodi)
-                            <span class="badge badge-danger py-2 my-2 px-4">
-                                Belum Ada Biodata
-                            </span>
-                            @else
-                            <span class="badge badge-success py-2 my-2 px-4">
-                                Sudah Ada Biodata
-                            </span>
-                            @endif
-                        </td>
-                    </tr>
                     @foreach ($kaprodi as $item)
                     <tr>
                         <th class="text-dark text-uppercase">Jurusan</th>
@@ -53,19 +59,12 @@ detail
                             {{$item->jurusan->nama_jurusan}}
                         </td>
                     </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Photo</th>
-                        <td>:</td>
-                        <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/kaprodi/'.$item->photo) }}"
-                                width="200px" />
-                        </td>
-                    </tr>
                     @endforeach
                 </table>
             </div>
             @if($kaprodi)
-            <a type="submit" href="/kaprodi" class="btn btn-warning shadow">Back</a>
+            <a type="submit" href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            <a type="submit" href="{{url('kaprodi/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
             @endif
             @if(!$kaprodi)
             <!-- maka tampilkan form untuk mengisi biodata -->

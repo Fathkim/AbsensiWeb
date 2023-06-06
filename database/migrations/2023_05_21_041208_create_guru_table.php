@@ -17,7 +17,7 @@ class CreateGuruTable extends Migration
             $table->increments('id');
             $table->integer('id_user')->unsigned();
             $table->integer('id_mapel')->unsigned();
-            $table->integer('nomor');
+            $table->bigInteger('nomor');
             $table->string('photo')->nullable();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_mapel')->references('id')->on('mapel')->onDelete('cascade');

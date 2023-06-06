@@ -18,9 +18,9 @@ class CreateSiswaTable extends Migration
             $table->integer('id_kelas')->unsigned();
             $table->integer('id_user')->unsigned();
             $table->string('alamat')->nullable();
-            $table->integer('no_hp')->nullable();
-            $table->integer('nis')->nullable();
-            $table->integer('nisn')->nullable();
+            $table->bigInteger('no_hp')->nullable();
+            $table->bigInteger('nis')->nullable();
+            $table->bigInteger('nisn')->nullable();
             $table->string('photo')->nullable();
             $table->foreign('id_kelas')->references('id')->on('kelas')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');

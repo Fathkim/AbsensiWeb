@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/izin', 'IzinController@index')->name('izin');
 Route::post('/izin/send', 'IzinController@store');
 
+/**======================================== */
 
 // kaprodi view
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
@@ -45,6 +46,8 @@ Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kap
 Route::delete('/delete-kaprodi/{id}', 'KaprodiController@clear')->name('delete-kaprodi');
 Route::post('/kaprodi-create-biodata', 'KaprodiController@store')->name('create-kaprodi');
 
+/**======================================== */
+
 // Guru View
 Route::get('/guru/edit/{id}', 'GuruController@edit')->name('edit-kaprodi');
 Route::get('/guru/show/{id}', 'GuruController@show')->name('show-kaprodi');
@@ -54,12 +57,18 @@ Route::put('/guru/update/{id}', 'GuruController@update')->name('update-guru');
 Route::delete('/delete-guru/{id}', 'GuruController@delete')->name('delete-guru');
 Route::post('/guru-create-biodata', 'GuruController@store')->name('create-guru');
 
+/**======================================== */
+
 // Siswa View
-Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-kaprodi');
+Route::get('/siswa/edit/{id}', 'SiswaController@edit')->name('edit-siswa');
+Route::get('/siswa/show/{id}', 'SiswaController@show')->name('show-siswa');
 
 // Siswa Route Action Form
 Route::put('/siswa/update/{id}', 'SiswaController@update')->name('update-siswa');
 Route::delete('/delete-siswa/{id}', 'SiswaController@delete')->name('delete-siswa');
+Route::post('/siswa-create-biodata', 'SiswaController@store')->name('create-siswa');
+
+/**======================================== */
 
 // admin denined
 Route::middleware(['PreventAdminAccess'])->group(function () {
@@ -75,8 +84,6 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/guru', 'GuruController@guru')->name('guru');
     Route::get('/siswa', 'SiswaController@siswa')->name('siswa');
     
-    // View User
-    Route::get('/create-user', 'UserController@create')->name('create-user');
     // User Action
     Route::post('/data-create', 'UserController@store');
     // Create mapel
@@ -91,9 +98,14 @@ Route::middleware(['checkrole:admin'])->group(function () {
 // Rute-rute yang tidak boleh diakses oleh siswa
 Route::middleware(['PreventSiswaAccess'])->group(function () {
     
+    // View User
+    Route::get('/create-user', 'UserController@create')->name('create-user');
+    // Create mapel
+    Route::post('/mapel-create', 'UserController@mapelStore');
+    // Create kelas
+    Route::post('/kelas-create', 'UserController@kelasStore');
     // User
     Route::get('/user', 'UserController@index')->name('user');
-
     // Monthly Report
     Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
 });

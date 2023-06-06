@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Absensi | @yield('title')</title>
+    <title>@yield('title')</title>
 
     <!-- image icon web -->
     <link rel="icon" type="image/x-icon" href="{{ asset('images/icon-web.png') }}">
@@ -75,7 +75,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid my-5">
+                <div class="container-fluid my-5 ">
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->

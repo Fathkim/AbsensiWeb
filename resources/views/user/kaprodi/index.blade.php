@@ -65,15 +65,20 @@ Kaprodi User
     </li>
 
 
-    @if (Auth::user()->level != 'admin')
+    @if(Auth::user()->level == 'siswa')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profile</span></a>
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
     </li>
     @endif
 
+    <li class="nav-item">
+        <a class="nav-link" href="/profile">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
             <i class="fas fa-fw fa-sign-out"></i>
@@ -108,19 +113,21 @@ Kaprodi User
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
-
 @endsection
 
 @section('content')
 
-<a href="{{route('user')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block">User Kaprodi</h1>
+
+    <a href="{{route('user')}}" class="d-sm-inline-block ml-auto btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+</div>
 
 <!-- DataTales Example -->
-<div class="card shadow mb-4 mt-5">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User Kaprodi</h6>
-    </div>
+<div class="rounded border-left-primary shadow mb-4 mx-0 mt-5">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -138,6 +145,7 @@ Kaprodi User
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Status</th>
+
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
                     </tr>
