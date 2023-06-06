@@ -1,19 +1,40 @@
 @extends('layouts.main-view')
 
 @section('title')
-detail
+Detail {{$user->name}}
 @endsection
 
 @section('content')
 <!-- content -->
 <div class="container">
     <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-        <div class="card-header">
-            <h3 class="text-dark text-uppercase">{{$user->name}}</h3>
+    <div class="card-header d-flex align-items-center">
+            <p class="m-0">Detail User</p>
+            <div class="ml-auto">
+                @if(!$guru)
+                <span class="badge badge-danger py-2 my-2 px-4">
+                    Belum Ada Biodata
+                </span>
+                @else
+                <span class="badge badge-success py-2 my-2 px-4">
+                    Sudah Ada Biodata
+                </span>
+                @endif
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-borderless">
+                    @foreach($guru as $item)
+                    <tr>
+                        <th class="text-dark text-uppercase">Photo</th>
+                        <td>:</td>
+                        <td>
+                            <img class="img-thumbnail" src="{{ asset('/storage/guru/'.$item->photo) }}"
+                            width="200px" />
+                        </td>
+                    </tr>
+                    @endforeach
                     <tr>
                         <th class="text-dark text-uppercase">Nama</th>
                         <td>:</td>
@@ -30,21 +51,6 @@ detail
                         <td>:</td>
                         <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Status Biodata</th>
-                        <td>:</td>
-                        <td class="p-0">
-                            @if(!$guru)
-                            <span class="badge badge-danger py-2 my-2 px-4">
-                                Belum Ada Biodata
-                            </span>
-                            @else
-                            <span class="badge badge-success py-2 my-2 px-4">
-                                Sudah Ada Biodata
-                            </span>
-                            @endif
-                        </td>
-                    </tr>
                     @foreach ($guru as $item)
                     <tr>
                         <th class="text-dark text-uppercase">Mapel</th>
@@ -57,22 +63,16 @@ detail
                         <th class="text-dark text-uppercase">Nomor</th>
                         <td>:</td>
                         <td>
+                            <label class="text-dark">+62</label>
                             {{$item->nomor}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Photo</th>
-                        <td>:</td>
-                        <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/guru/'.$item->photo) }}"
-                            width="200px" />
                         </td>
                     </tr>
                     @endforeach
                 </table>
             </div>
             @if($guru)
-            <a type="submit" href="/guru" class="btn btn-warning shadow">Back</a>
+            <a type="submit" href="/guru" class="btn btn-primary px-5 shadow">Back</a>
+            <a type="submit" href="{{url('guru/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
             @endif
             @if(!$guru)
             <!-- maka tampilkan form untuk mengisi biodata -->
@@ -80,7 +80,7 @@ detail
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <label for="name" for="inputGroupSelect01">Jurusan</label>
+                        <label for="name" for="inputGroupSelect01">Mapel</label>
                         <select class="form-control" require id="inputGroupSelect01" name="id_mapel">
                             <option value="0">Choose...</option>
                             @foreach ($mapel as $item)

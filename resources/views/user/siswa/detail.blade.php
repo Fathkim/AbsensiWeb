@@ -1,19 +1,40 @@
 @extends('layouts.main-view')
 
 @section('title')
-detail
+Detail {{$user->name}}
 @endsection
 
 @section('content')
 <!-- content -->
 <div class="container">
     <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-        <div class="card-header">
-            <h3 class="text-dark text-uppercase">{{$user->name}}</h3>
+        <div class="card-header d-flex align-items-center">
+            <p class="m-0">Detail User</p>
+            <div class="ml-auto">
+                @if(!$siswa)
+                <span class="badge badge-danger py-2 my-2 px-4">
+                    Belum Ada Biodata
+                </span>
+                @else
+                <span class="badge badge-success py-2 my-2 px-4">
+                    Sudah Ada Biodata
+                </span>
+                @endif
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-borderless">
+                    @foreach ($siswa as $item)
+                    <tr>
+                        <th class="text-dark text-uppercase">Photo</th>
+                        <td>:</td>
+                        <td>
+                            <img class="img-thumbnail" src="{{ asset('/storage/siswa/'.$item->photo) }}"
+                                width="200px" />
+                        </td>
+                    </tr>
+                    @endforeach
                     <tr>
                         <th class="text-dark text-uppercase">Nama</th>
                         <td>:</td>
@@ -30,21 +51,6 @@ detail
                         <td>:</td>
                         <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Status Biodata</th>
-                        <td>:</td>
-                        <td class="p-0">
-                            @if(!$siswa)
-                            <span class="badge badge-danger py-2 my-2 px-4">
-                                Belum Ada Biodata
-                            </span>
-                            @else
-                            <span class="badge badge-success py-2 my-2 px-4">
-                                Sudah Ada Biodata
-                            </span>
-                            @endif
-                        </td>
-                    </tr>
                     @foreach ($siswa as $item)
                     <tr>
                         <th class="text-dark text-uppercase">Kelas</th>
@@ -52,26 +58,12 @@ detail
                         <td>
                             {{$item->kelas->nama_kelas}}
                         </td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <th class="text-dark text-uppercase">Nomor HP</th>
                         <td>:</td>
                         <td>
                             {{$item->no_hp}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Alamat</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->alamat}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">nis</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->nis}}
                         </td>
                     </tr>
                     <tr>
@@ -82,11 +74,17 @@ detail
                         </td>
                     </tr>
                     <tr>
-                        <th class="text-dark text-uppercase">Photo</th>
+                        <th class="text-dark text-uppercase">nis</th>
                         <td>:</td>
                         <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/siswa/'.$item->photo) }}"
-                            width="200px" />
+                            {{$item->nis}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-dark text-uppercase">Alamat</th>
+                        <td>:</td>
+                        <td>
+                            {{$item->alamat}}
                         </td>
                     </tr>
                     @endforeach
@@ -141,7 +139,7 @@ detail
                             <input type="number" class="form-control" name="nis">
                         </div>
                     </div>
-                    
+
                 </div>
                 <button type="submit" class="btn btn-primary shadow">Create Biodata</button>
                 <a type="submit" href="/siswa" class="btn btn-warning shadow">Back</a>

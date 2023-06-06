@@ -67,15 +67,18 @@ Dashboard
             <span>Laporan Bulanan</span></a>
     </li>
 
-    @if (Auth::user()->level != 'admin')
     <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
-
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">

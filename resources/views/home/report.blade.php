@@ -46,7 +46,7 @@ Monthly Report
             </div>
         </div>
     </li>
-    
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('create-user')}}">
@@ -62,15 +62,20 @@ Monthly Report
             <span>Laporan Bulanan</span></a>
     </li>
 
-    @if (Auth::user()->level != 'admin')
-    <!-- Nav Item - Dashboard -->
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
-    
+
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
             <i class="fas fa-fw fa-sign-out"></i>
@@ -122,7 +127,7 @@ Monthly Report
                     <div class="col mr-5">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                             Start Date</div>
-                            <input type="date" class="form-control">
+                        <input type="date" class="form-control">
 
                     </div>
                     <div class="col-auto  d-none d-sm-inline-block">
@@ -139,8 +144,8 @@ Monthly Report
                     <div class="col mr-5">
                         <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
                             End Date</div>
-                            <input type="date" class="form-control">
-                            
+                        <input type="date" class="form-control">
+
                     </div>
                     <div class="col-auto d-none d-sm-inline-block">
                         <i class="fas fa-check fa-2x text-danger"></i>

@@ -5,33 +5,30 @@ Create User
 @endsection
 
 @section('sidebar')
-<!-- Sidebar - Brand -->
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
     </a>
 
-    <!-- Divider -->
+
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('home')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
+
     <div class="sidebar-heading">
         Admin
     </div>
 
     @if (Auth::user()->level == 'admin')
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usercollaps" aria-expanded="flase"
             aria-controls="collapseTwo">
@@ -47,7 +44,6 @@ Create User
         </div>
     </li>
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{url('create-user')}}">
             <i class="fas fa-fw fa-cog"></i>
@@ -55,21 +51,26 @@ Create User
     </li>
     @endif
 
-    <!-- Nav Item - Dashboard -->
+
+    @if (Auth::user()->level != 'siswa')
     <li class="nav-item">
         <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
     </li>
+    @endif
 
-    @if (Auth::user()->level != 'admin')
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('izin')}}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Izin (udzur)</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-    @endif
 
     <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#logoutModal" data-target="#logoutModal">
