@@ -39,7 +39,6 @@ Route::post('/izin/send', 'IzinController@store');
 // kaprodi view
 Route::get('/kaprodi/edit/{id}', 'KaprodiController@edit')->name('edit-kaprodi');
 Route::get('/kaprodi/show/{id}', 'KaprodiController@show')->name('show-kaprodi');
-Route::get('/kaprodi-biodata', 'KaprodiController@create')->name('create-view');
 
 // Kaprodi Route Action Form
 Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');

@@ -37,6 +37,7 @@
     33 => 'App\\Providers\\EventServiceProvider',
     34 => 'App\\Providers\\RouteServiceProvider',
     35 => 'Vinkla\\Hashids\\HashidsServiceProvider',
+    36 => 'Milon\\Barcode\\BarcodeServiceProvider',
   ),
   'eager' => 
   array (
@@ -62,6 +63,7 @@
     19 => 'App\\Providers\\EventServiceProvider',
     20 => 'App\\Providers\\RouteServiceProvider',
     21 => 'Vinkla\\Hashids\\HashidsServiceProvider',
+    22 => 'Milon\\Barcode\\BarcodeServiceProvider',
   ),
   'deferred' => 
   array (
