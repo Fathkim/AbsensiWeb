@@ -60,19 +60,32 @@ Dashboard
     </li>
     @endif
 
+
+    @if(Auth::user()->level == 'guru' || Auth::user()->level == 'kaprodi')
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('create-user')}}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Buat Akademik</span></a>
+    </li>
+    @endif
+
+    @if(Auth::user()->level != 'siswa')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('monthly-report')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Laporan Bulanan</span></a>
     </li>
+    @endif
 
+    @if(Auth::user()->level == 'siswa')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('izin')}}">
             <i class="fas fa-fw fa-info"></i>
             <span>Izin (udzur)</span></a>
     </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link" href="/profile">

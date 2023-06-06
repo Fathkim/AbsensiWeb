@@ -84,23 +84,22 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::get('/guru', 'GuruController@guru')->name('guru');
     Route::get('/siswa', 'SiswaController@siswa')->name('siswa');
     
-    // View User
-    Route::get('/create-user', 'UserController@create')->name('create-user');
     // User Action
     Route::post('/data-create', 'UserController@store');
-    // Create mapel
-    Route::post('/mapel-create', 'UserController@mapelStore');
-    // Create kelas
-    Route::post('/kelas-create', 'UserController@kelasStore');
 });
 
 
 // Rute-rute yang tidak boleh diakses oleh siswa
 Route::middleware(['PreventSiswaAccess'])->group(function () {
     
+    // View User
+    Route::get('/create-user', 'UserController@create')->name('create-user');
+    // Create mapel
+    Route::post('/mapel-create', 'UserController@mapelStore');
+    // Create kelas
+    Route::post('/kelas-create', 'UserController@kelasStore');
     // User
     Route::get('/user', 'UserController@index')->name('user');
-
     // Monthly Report
     Route::get('/monthly-report', 'HomeController@show')->name('monthly-report');
 });

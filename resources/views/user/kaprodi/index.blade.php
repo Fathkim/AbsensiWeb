@@ -65,12 +65,14 @@ Kaprodi User
     </li>
 
 
+    @if(Auth::user()->level == 'siswa')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{url('izin')}}">
             <i class="fas fa-fw fa-info"></i>
             <span>Izin (udzur)</span></a>
     </li>
+    @endif
 
     <li class="nav-item">
         <a class="nav-link" href="/profile">
@@ -111,7 +113,6 @@ Kaprodi User
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
-
 @endsection
 
 @section('content')
@@ -121,8 +122,8 @@ Kaprodi User
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block">User Kaprodi</h1>
 
-<a href="{{route('user')}}" class="d-sm-inline-block ml-auto btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
+    <a href="{{route('user')}}" class="d-sm-inline-block ml-auto btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-file-import text-white-50 mx-2"></i>Import Data User</a>
 </div>
 
 <!-- DataTales Example -->
