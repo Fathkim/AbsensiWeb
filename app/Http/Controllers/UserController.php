@@ -61,4 +61,10 @@ class UserController extends Controller
         return redirect('create-user');
     }
 
+    public function jurusanStore(Request $request)
+    {
+        Jurusan::create($request->all());
+        return redirect('create-user');
+    }
+
 }

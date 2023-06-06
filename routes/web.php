@@ -83,6 +83,8 @@ Route::middleware(['checkrole:admin'])->group(function () {
     Route::post('/mapel-create', 'UserController@mapelStore');
     // Create kelas
     Route::post('/kelas-create', 'UserController@kelasStore');
+    // Create jurusan
+    Route::post('/jurusan-create', 'UserController@jurusanStore');
 });
 
 
