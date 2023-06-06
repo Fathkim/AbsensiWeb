@@ -154,10 +154,8 @@ Profile
                                     </div>
                                     <div class="form-group">
                                         <label for="kelas">Kelas</label>
-                                        @foreach ($kelas as $item)
-                                        <input type="text" name="id_kelas" hidden value="{{$item->id}}">
-                                        <input type="text" readonly class="form-control" name="" value="{{$item->nama_kelas}}">
-                                        @endforeach
+                                        <input type="text" name="id_kelas" hidden value="{{$siswa->id_kelas}}">
+                                        <input type="text" readonly class="form-control" name="" value="{{$siswa->kelas->nama_kelas}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>

@@ -85,6 +85,12 @@ Route::middleware(['checkrole:admin'])->group(function () {
     
     // User Action
     Route::post('/data-create', 'UserController@store');
+    // Create mapel
+    Route::post('/mapel-create', 'UserController@mapelStore');
+    // Create kelas
+    Route::post('/kelas-create', 'UserController@kelasStore');
+    // Create jurusan
+    Route::post('/jurusan-create', 'UserController@jurusanStore');
 });
 
 

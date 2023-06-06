@@ -128,7 +128,6 @@ Create User
     {{ $message }}
 </div>
 @endif
-
 <div class="card shadow py-3 px-4">
     <form action="{{ url('data-create')}}" method="post" id="myForm">
         @csrf
@@ -144,7 +143,7 @@ Create User
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="col-md-6 input-group mb-3">
-                <label class="form-control col-md-2 input-group-text" for="inputGroupSelect01">Lavel</label>
+                <label class="form-control col-md-2 input-group-text" for="inputGroupSelect01">Level</label>
                 <select name="level" require class="form-control form-select" id="level">
                     <option>Choose...</option>
                     <option value="kaprodi">Kaprodi</option>
@@ -153,7 +152,7 @@ Create User
                 </select>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="input-group">
                     <span class="input-group-text col-md-2 form-control" id="basic-addon1">password</span>
                     <input type="password" class="form-control" require name="password" placeholder="password"
@@ -172,52 +171,81 @@ Create User
 </div>
 @endif
 
+<div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+    <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block">Buat Jurusan</h1>
+</div>
+<div class="card shadow py-3 px-4">
+    <form action="{{ url('jurusan-create')}}" method="post" id="myForm">
+        @csrf
+        <div class="row">
+            <div class="col-md-12 input-group">
+                <span class="input-group-text col-md-2 form-control" id="basic-addon1">Nama jurusan</span>
+                <input type="text" class="form-control" required name="nama_jurusan" id="name" placeholder="Jurusan"
+                    aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="col-md-12 input-group my-3">
+                <span class="input-group-text col-md-2 form-control" id="basic-addon1">Penanggng Jawab</span>
+                <select type="text" class="form-control" required name="id_user" id="name" placeholder="Nama PIC"
+                    aria-label="Username" aria-describedby="basic-addon1">
+                    <option value="">Pilih PIC</option>
+                    @foreach ($user as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="form-control btn btn-success" id="submitButton">Tambah
+                    Data</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <!-- Page Heading -->
-<div class="row mb-1">
-    <div class="col-md-6">
+<div class="row justify-content-center mb-1 ml-2">
+
+    <div class="row px-2">
         <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
             <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Mapel</h1>
         </div>
 
-        <div class="card shadow py-3 px-3">
+        <div class="card shadow col-md-11 py-3 ">
             <form action="{{url('mapel-create')}}" method="post" id="myForm">
                 @csrf
                 <div class="input-group">
-                    <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Lengkap</span>
-                    <input type="text" class="form-control" require name="nama_mapel" id="name"
+                    <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Pelajaran</span>
+                    <input type="text" class="form-control" required name="nama_mapel" id="name"
                         placeholder="mata pelajaran">
                 </div>
-
-                <button type="submit" class="form-control mt-4 btn btn-success">Tambah
-                    Data</button>
+                <button type="submit" class="form-control mt-4 btn btn-success">Tambah Data</button>
             </form>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="row px-2">
         <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
             <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Kelas</h1>
         </div>
 
-        <div class="card shadow py-3 px-3">
+        <div class="card shadow col-md-11 py-3 ">
             <form action="{{url('kelas-create')}}" method="post" id="myForm">
                 @csrf
                 <div class="input-group">
                     <span class="input-group-text col-md-3 form-control" id="basic-addon1">Nama Kelas</span>
-                    <input type="text" class="form-control" require name="nama_kelas" id="name" placeholder="">
+                    <input type="text" class="form-control" required name="nama_kelas" id="name" placeholder="kelas">
                 </div>
-                <div class="input-group mt-1">
+                <div class="input-group mt-3">
                     <span class="input-group-text col-md-3 form-control" id="basic-addon1">Jurusan:</span>
-                    <select name="id_jurusan" require class="form-control form-select" id="level">
+                    <select name="id_jurusan" required class="form-control form-select" id="level">
+                        <option value="">Choose...</option>
                         @foreach ($jurusan as $row)
-                        <option>Choose...</option>
                         <option value="{{$row->id}}">{{$row->nama_jurusan}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <button type="submit" class="form-control mt-4 btn btn-success">Tambah
-                    Data</button>
+
+                <button type="submit" class="form-control mt-3 btn btn-success">Tambah Data</button>
             </form>
         </div>
     </div>
