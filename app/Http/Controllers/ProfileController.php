@@ -17,8 +17,8 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        $siswa = Siswa::where('id_user', auth()->user()->id)->get();
-        return view('profile.profile', compact('siswa'));
+        $data = Siswa::where('id_user', auth()->user()->id)->get();
+        return view('profile.profile', compact('data'));
     }
 
     public function edit($id){
