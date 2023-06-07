@@ -10070,6 +10070,19 @@ a:focus {
     background-size: cover
 }
 
+.img-preview {
+    width: 250px; /* Adjust as needed */
+    height: 250px; /* Adjust as needed */
+    background-size: cover;
+    border-radius: 0.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }  
+  
+
 .bg-gradient-warning {
     background-color: #f6c23e;
     background-image: linear-gradient(180deg, #f6c23e 10%, #dda20a 100%);
@@ -10539,13 +10552,14 @@ a:focus {
 /* Target the increment/decrement buttons */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Hide the increment/decrement buttons */
 input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
+    -moz-appearance: textfield;
+    /* Firefox */
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
@@ -11040,7 +11054,7 @@ input[type="number"] {
     background-size: cover
 }
 
-.bg-login-image-container{
+.bg-login-image-container {
     background: url(../images/SMKMuhammadiyah2.jpg);
     background-position: center;
     background-size: cover;

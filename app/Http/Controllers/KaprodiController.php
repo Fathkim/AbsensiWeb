@@ -65,7 +65,7 @@ class KaprodiController extends Controller
         Kaprodi::create($dataKaprodi);
         
         // Redirect
-        return redirect()->route('kaprodi')->with('success', 'Data berhasil diupdate');
+        return redirect()->back()->with('success', 'Data berhasil diupdate');
         
     }
 
@@ -140,11 +140,11 @@ class KaprodiController extends Controller
             $path = $request->file('photo')->storeAs($destination_path, $image_name);
             $dataKaprodi['photo'] = $image_name;
         } else {
-            $dataKaprodi['photo'] = $kaprodi->photo;
+            // $dataKaprodi['photo'] = $kaprodi->photo;
         }
         
         $user->update($dataUser);
-        $kaprodi->update($dataKaprodi);
+        // $kaprodi->update($dataKaprodi);
     
     
         // Redirect
