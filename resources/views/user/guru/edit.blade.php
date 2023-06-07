@@ -4,12 +4,7 @@
 Edit Your User
 @endsection
 
-@section('sidebar')
-@endsection
-
 @section('content')
-
-
 <!-- content -->
 <div class="container">
     <div class="rounded shadow-lg bg-white p-3">
@@ -34,7 +29,9 @@ Edit Your User
                 <div class="col-md-6 @if(!$guru) d-none @else d-sm-inline-block @endif">
                     @foreach ($guru as $item)
                     <div class="justify-content-center d-flex mb-4">
-                        <div class="img-preview" style="background-image: url('{{ asset('/storage/guru/'.$item->photo) }}')" id="preview-selected-image"></div>
+                        <div class="img-preview"
+                            style="background-image: url('{{ asset('/storage/guru/'.$item->photo) }}')"
+                            id="preview-selected-image"></div>
                     </div>
                     @endforeach
                 </div>
@@ -72,8 +69,7 @@ Edit Your User
                     </div>
                 </div>
             </div>
-                    <button type="submit" class="btn btn-success col-md-2 text-uppercase">edit</button>
-
+            <button type="submit" class="btn btn-success col-md-2 text-uppercase">edit</button>
         </form>
     </div>
 

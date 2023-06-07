@@ -47,7 +47,7 @@ Detail {{$user->name}}
                             <td class="px-0">{{$user->email}}</td>
                         </tr>
                         <tr>
-                            <th class="text-dark text-uppercase">Lavel</th>
+                            <th class="text-dark text-uppercase">Level</th>
                             <td>:</td>
                             <td class="badge badge-primary py-2 my-2 px-4">{{$user->level}}</td>
                         </tr>
@@ -80,7 +80,7 @@ Detail {{$user->name}}
                         <td class="px-0">{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <th class="text-dark text-uppercase">Lavel</th>
+                        <th class="text-dark text-uppercase">Level</th>
                         <td>:</td>
                         <td class="badge badge-primary py-2 my-2 px-4">{{$user->level}}</td>
                     </tr>

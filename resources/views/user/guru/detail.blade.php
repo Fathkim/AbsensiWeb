@@ -48,7 +48,7 @@ Detail {{$user->name}}
                             <td>{{$user->email}}</td>
                         </tr>
                         <tr>
-                            <th class="text-dark text-uppercase">Lavel</th>
+                            <th class="text-dark text-uppercase">Level</th>
                             <td>:</td>
                             <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                         </tr>
@@ -73,8 +73,8 @@ Detail {{$user->name}}
                 </div>
             </div>
             @endforeach
-            <a type="submit" href="/guru" class="btn btn-primary px-5 shadow">Back</a>
             <a type="submit" href="{{url('guru/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
+            <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
             @else
             <div class="table-responsive">
                 <table class="table table-borderless">
@@ -99,7 +99,7 @@ Detail {{$user->name}}
                         <td>{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <th class="text-dark text-uppercase">Lavel</th>
+                        <th class="text-dark text-uppercase">Level</th>
                         <td>:</td>
                         <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>

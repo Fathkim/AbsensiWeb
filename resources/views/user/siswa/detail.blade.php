@@ -11,6 +11,8 @@ Detail {{$user->name}}
         <div class="card-header d-flex align-items-center">
             <p class="m-0">Detail User</p>
             <div class="ml-auto">
+                <a href="{{url('siswa/edit', $user->id)}}"
+                    class="badge badge-success py-2 my-2 px-4 button-none shadow">Edit User</a>
                 @if(!$siswa)
                 <span class="badge badge-danger py-2 my-2 px-4">
                     Belum Ada Biodata
@@ -47,7 +49,7 @@ Detail {{$user->name}}
                         <td class="px-0">{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <th class="text-dark text-uppercase">Lavel</th>
+                        <th class="text-dark text-uppercase">Level</th>
                         <td>:</td>
                         <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>
@@ -73,10 +75,10 @@ Detail {{$user->name}}
                     </tr>
                     <tr>
                         <th class="text-dark text-uppercase">nisn</th>
-                        <td >:</td>
+                        <td>:</td>
                         <td class="px-0">
                             {{$item->nisn}}
-                        </td >
+                        </td>
                     </tr>
                     <tr>
                         <th class="text-dark text-uppercase">nis</th>
@@ -96,7 +98,14 @@ Detail {{$user->name}}
                 </table>
             </div>
             @if($siswa)
-            <a type="submit" href="/siswa" class="btn btn-warning shadow">Back</a>
+            <form action="{{ route('delete-siswa', $user->id) }}" class="mt-4" method="post">
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit"
+                    onclick="return confirm('Apakah anda akan menghapus biodata dari {{$user->name}} ?');"
+                    class="btn px-5 btn-warning shadow">Hapus Biodata</button>
+                    <a href="/siswa" class="btn px-5 btn-primary shadow">Back</a>
+            </form>
             @endif
             @if(!$siswa)
             <!-- maka tampilkan form untuk mengisi biodata -->

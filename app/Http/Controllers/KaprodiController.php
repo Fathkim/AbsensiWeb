@@ -127,10 +127,10 @@ class KaprodiController extends Controller
             $dataUser['password'] = bcrypt($data['password']);
         }
 
-        $dataKaprodi = [
-            'id_user' => Auth()->user()->id,
-            'id_jurusan' => $data['id_jurusan'],
-        ];
+        // $dataKaprodi = [
+        //     'id_user' => Auth()->user()->id,
+        //     'id_jurusan' => $data['id_jurusan'],
+        // ];
     
         
         if ($request->hasFile('photo')) {

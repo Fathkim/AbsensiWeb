@@ -66,7 +66,7 @@ class SiswaController extends Controller
         }
 
         Siswa::create($dataSiswa);
-        return redirect()->route('siswa')->with('success', 'Data siswa berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data siswa berhasil ditambahkan');
     }
 
     /**
@@ -91,7 +91,10 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kelas = Kelas::all();
+        $user = User::find($id);
+        $siswa = Siswa::where('id_user',$id)->get()->all();
+        return view('user.siswa.edit', compact('user', 'siswa', 'kelas'));
     }
 
     /**
@@ -103,7 +106,47 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Memanggil data user, Memanggil data kaprodi, Memanggil data mapel
+        $user = User::find($id);
+        $siswa = Siswa::find($id);
+        $kelas = Kelas::all();
+    
+        $data = $request->all();
+    
+        $dataUser = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'level' => $data['level'],
+            'password' => $data['password']
+        ];
+        // kalo kosong gunakan password lama jika tidak kosong gunakan password baru dan hash password
+        if ($data['password'] == null) {
+            $dataUser['password'] = $user->password;
+        } else {
+            $dataUser['password'] = bcrypt($data['password']);
+        }
+
+        // $dataKaprodi = [
+        //     'id_user' => Auth()->user()->id,
+        //     'id_jurusan' => $data['id_jurusan'],
+        // ];
+        
+        if ($request->hasFile('photo')) {
+            $destination_path = 'public/kaprodi';
+            $image = $request->file('photo');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('photo')->storeAs($destination_path, $image_name);
+            $dataSiswa['photo'] = $image_name;
+        } else {
+            // $dataKaprodi['photo'] = $kaprodi->photo;
+        }
+        
+        $user->update($dataUser);
+        // $kaprodi->update($dataKaprodi);
+    
+    
+        // Redirect
+        return redirect()->route('siswa')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -112,8 +155,12 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function clear($id)
     {
-        //
+        $siswa = Siswa::find($id);
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/siswa');
     }
+
 }

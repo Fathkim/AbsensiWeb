@@ -63,7 +63,7 @@ class GuruController extends Controller
         }
 
         Guru::create($dataGuru);
-        return redirect()->route('guru')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
