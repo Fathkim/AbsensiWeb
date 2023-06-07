@@ -155,12 +155,17 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function clear($id)
+    public function bioclear($id)
     {
         $siswa = Siswa::find($id);
+        $siswa->delete();
+        return redirect()->back();
+    }
+
+    public function clear($id)
+    {
         $user = User::find($id);
         $user->delete();
         return redirect('/siswa');
     }
-
 }

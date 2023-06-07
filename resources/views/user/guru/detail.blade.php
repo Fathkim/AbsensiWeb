@@ -73,8 +73,14 @@ Detail {{$user->name}}
                 </div>
             </div>
             @endforeach
-            <a type="submit" href="{{url('guru/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
-            <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            <form action="{{ route('delete-bio-guru', $item->id) }}" class="mt-4" method="post">
+            @csrf
+                {{method_field('DELETE')}}
+                <button type="submit"
+                    onclick="return confirm('Apakah anda akan menghapus biodata dari {{$user->name}} ?');"
+                    class="btn px-5 btn-warning shadow">Hapus Biodata</button>
+                    <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            </form>
             @else
             <div class="table-responsive">
                 <table class="table table-borderless">

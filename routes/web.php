@@ -23,8 +23,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Profile
 Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile');
-Route::put('/profile/send/{id}', 'ProfileController@update')->name('profile');
+Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile-edit');
+Route::put('/profile/send/{id}', 'ProfileController@update')->name('profile-send');
 
 
 // Home | Dashboard
@@ -42,6 +42,7 @@ Route::get('/kaprodi/show/{id}', 'KaprodiController@show')->name('show-kaprodi')
 
 // Kaprodi Route Action Form
 Route::put('/kaprodi/update/{id}', 'KaprodiController@update')->name('update-kaprodi');
+Route::delete('/delete-bio-kaprodi/{id}', 'KaprodiController@bioclear')->name('delete-bio-kaprodi');
 Route::delete('/delete-kaprodi/{id}', 'KaprodiController@clear')->name('delete-kaprodi');
 Route::post('/kaprodi-create-biodata', 'KaprodiController@store')->name('create-kaprodi');
 
@@ -53,6 +54,7 @@ Route::get('/guru/show/{id}', 'GuruController@show')->name('show-kaprodi');
 
 // Guru Route Action Form
 Route::put('/guru/update/{id}', 'GuruController@update')->name('update-guru');
+Route::delete('/delete-bio-guru/{id}', 'GuruController@bioclear')->name('delete-bio-guru');
 Route::delete('/delete-guru/{id}', 'GuruController@delete')->name('delete-guru');
 Route::post('/guru-create-biodata', 'GuruController@store')->name('create-guru');
 /**======================================== */
@@ -63,6 +65,7 @@ Route::get('/siswa/show/{id}', 'SiswaController@show')->name('show-siswa');
 
 // Siswa Route Action Form
 Route::put('/siswa/update/{id}', 'SiswaController@update')->name('update-siswa');
+Route::delete('/delete-bio-siswa/{id}', 'SiswaController@bioclear')->name('delete-bio-siswa');
 Route::delete('/delete-siswa/{id}', 'SiswaController@clear')->name('delete-siswa');
 Route::post('/siswa-create-biodata', 'SiswaController@store')->name('create-siswa');
 

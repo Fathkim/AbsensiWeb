@@ -158,9 +158,15 @@ class KaprodiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function clear($id)
+
+    public function bioclear($id)
     {
         $kaprodi = kaprodi::find($id);
+        $kaprodi->delete();
+        return redirect()->back();
+    }
+    public function clear($id)
+    {
         $user = User::find($id);
         $user->delete();
         return redirect('/kaprodi');

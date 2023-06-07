@@ -4,10 +4,9 @@
 Profile
 @endsection
 
-
 @section('sidebar')
-<!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar content -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
         <img src="{{ asset('images/icon-web.png') }}" class="image-thumbnail" style="width:2rem;" alt="Gambar">
         <div class="sidebar-brand-text my-2 mx-2">Muhammadiyah<sup>2</sup></div>
@@ -128,69 +127,78 @@ Profile
 
 @section('content')
 @if (Auth::user()->level == 'admin')
-<h4 class="d-flex align-items-center justify-content-center vh-100 text-center">You are Admin Here</h4>
+<div class="vh-90 d-flex align-items-center justify-content-center">
+    <h4 class="text-center">You are Admin Here</h4>
+</div>
 @else
-<!-- Earnings (Annual) Card Example -->
 <div class="row">
-    <div class="col-xl-4 col-md-4 mb-4 text-center">
-        <img src="{{ asset('/images/icon-web.png') }}" alt="#" class="rounded img-fluid img-thumbnail mb-3"
-            style="max-width: 100%; width:250px;">
+    @foreach ($siswa as $item)
+    <div class="col-md-auto d-flex mb-5 justify-content-center">
+        <div class="img-preview" style="background-image: url('{{ asset('/storage/siswa/'.$item->photo) }}')"
+            id="preview-selected-image">
+        </div>
     </div>
-    <div class="col-xl-8 col-md-8 mb-4">
+    @endforeach
+
+    <div class="col-md-9 mb-4">
         <div class="card shadow h-100 py-2">
             <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">Your Identiti Card
-                        </div>
+                <div class="row">
+                    <div class="mr-2">
+                        <div class="text mb-3 text-success text-uppercase mb-1">Your Identity Card</div>
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <tr class="text-capitalize">
                                     <td>Nama</td>
                                     <td>:</td>
-                                    <td>{{Auth::user()->name}}</td>
+                                    <td>{{ $currentUserName }}</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>:</td>
-                                    <td>{{Auth::user()->email}}</td>
+                                    <td>{{ $currentUserEmail }}</td>
                                 </tr>
-                                @foreach($siswa as $siswa)
                                 @if ($siswa)
+                                <tr>
+                                    <th class="text-dark text-uppercase">Barcode</th>
+                                    <td>:</td>
+                                    <td class="px-0">{!! DNS1D::getBarcodeHTML($currentUserBarcode, 'C128') !!}</td>
+                                </tr>
+                                @foreach ($siswa as $siswa)
                                 <tr class="text-capitalize">
                                     <td>kelas</td>
                                     <td>:</td>
-                                    <td>{{$siswa->kelas->nama_kelas}}</td>
+                                    <td>{{ $siswa->kelas->nama_kelas }}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>Alamat</td>
                                     <td>:</td>
-                                    <td>{{$siswa->alamat}}</td>
+                                    <td>{{ $siswa->alamat }}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>No Hp</td>
                                     <td>:</td>
-                                    <td>{{$siswa->no_hp}}</td>
+                                    <td>{{ $siswa->no_hp }}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NISN</td>
                                     <td>:</td>
-                                    <td>{{$siswa->nisn}}</td>
+                                    <td>{{ $siswa->nisn }}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NIS</td>
                                     <td>:</td>
-                                    <td>{{$siswa->nis}}</td>
+                                    <td>{{ $siswa->nis }}</td>
                                 </tr>
+                                @endforeach
+                                @endif
                             </table>
+                            @if ($siswa)
+                            <div class="d-flex mt-auto">
+                                <button type="button" class="btn btn-warning ml-2">Setting</button>
+                            </div>
+                            @endif
                         </div>
-                        <div class="d-flex mt-auto">
-                            <a href="{{url('profile/edit', $siswa->id)}}" type="button" class="btn btn-success">Edit
-                                Bio</a>
-                            <button type="button" class="btn btn-warning ml-2">Setting</button>
-                        </div>
-                        @endif
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -198,5 +206,4 @@ Profile
     </div>
 </div>
 @endif
-
 @endsection

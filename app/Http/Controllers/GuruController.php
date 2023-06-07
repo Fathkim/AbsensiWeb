@@ -154,9 +154,15 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function bioclear($id)
+    {
+        $guru = Guru::find($id);
+        $guru->delete();
+        return redirect()->back();
+    }
+    
     public function delete($id)
     {
-        $Guru = guru::find($id);
         $user = User::find($id);
         $user->delete();
         return redirect('/guru');

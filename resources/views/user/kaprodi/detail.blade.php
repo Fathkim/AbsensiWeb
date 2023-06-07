@@ -63,8 +63,14 @@ Detail {{$user->name}}
                     </table>
                 </div>
             </div>
-            <a href="{{url('kaprodi/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
-            <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            <form action="{{ route('delete-bio-kaprodi', $item->id) }}" class="mt-4" method="post">
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit"
+                    onclick="return confirm('Apakah anda akan menghapus biodata dari {{$user->name}} ?');"
+                    class="btn px-5 btn-warning shadow">Hapus Biodata</button>
+                    <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            </form>
             @else
             <div class="table-responsive mb-2">
                 <table class="table table-borderless">
@@ -117,7 +123,7 @@ Detail {{$user->name}}
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary shadow">Create Biodata</button>
+                <button type="submit" class="btn mb-4  btn-primary shadow">Create Biodata</button>
                 <a type="submit" href="/kaprodi" class="btn btn-warning shadow">Back</a>
             </form>
             @endif
