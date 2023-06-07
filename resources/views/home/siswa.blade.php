@@ -142,28 +142,29 @@ Absen
 <!-- Earnings (Annual) Card Example -->
 <div class="row">
     <div class="col-xl-6 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
+        <a class="card border-left-success shadow h-100 py-2" href="qrcode" data-toggle="modal" data-target="#myModal">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
+                    <div class="col m-2">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                             Check-In (Absen)</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
                     </div>
-                    <div class="col-auto">
+                    
+                    <div class="col-auto m-2">
                         <i class="fas fa-clock fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
     <div class="col-xl-6 col-md-6 mb-4">
         <div class="card border-left-danger shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
+                    <div class="col m-2">
                         <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
                             Check-Out (Absen)</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
@@ -672,6 +673,25 @@ Absen
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!! QrCode::size(300)->generate('https://techvblogs.com/blog/generate-qr-code-laravel-8') !!}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
     </div>
 </div>
