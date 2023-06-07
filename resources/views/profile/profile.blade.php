@@ -123,6 +123,7 @@ Profile
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
+
 @endsection
 
 @section('content')
@@ -142,9 +143,16 @@ Profile
     <div class="col-md-9 mb-4">
         <div class="card shadow h-100 py-2">
             <div class="card-body">
+<<<<<<< HEAD
                 <div class="row">
                     <div class="mr-2">
                         <div class="text mb-3 text-success text-uppercase mb-1">Your Identity Card</div>
+=======
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
+                            Your Identiti Card</div>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <tr class="text-capitalize">
@@ -157,6 +165,7 @@ Profile
                                     <td>:</td>
                                     <td>{{ $currentUserEmail }}</td>
                                 </tr>
+<<<<<<< HEAD
                                 @if ($siswa)
                                 @foreach ($siswa as $siswa)
                                 <tr class="text-capitalize">
@@ -169,26 +178,49 @@ Profile
                                     <td>kelas</td>
                                     <td>:</td>
                                     <td>{{ $siswa->kelas->nama_kelas }}</td>
+=======
+                                @foreach ($data as $row)
+                                <tr class="text-capitalize">
+                                    <td>kelas</td>
+                                    <td>:</td>
+                                    <td>{{$row->kelas->nama_kelas}}</td>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>Alamat</td>
                                     <td>:</td>
+<<<<<<< HEAD
                                     <td>{{ $siswa->alamat }}</td>
+=======
+                                    <td>{{$row->alamat}}</td>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>No Hp</td>
                                     <td>:</td>
+<<<<<<< HEAD
                                     <td>{{ $siswa->no_hp }}</td>
+=======
+                                    <td>{{$row->no_hp}}</td>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NISN</td>
                                     <td>:</td>
+<<<<<<< HEAD
                                     <td>{{ $siswa->nisn }}</td>
+=======
+                                    <td>{{$row->nisn}}</td>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NIS</td>
                                     <td>:</td>
+<<<<<<< HEAD
                                     <td>{{ $siswa->nis }}</td>
+=======
+                                    <td>{{$row->nis}}</td>
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                                 </tr>
                                 @endforeach
                                 @else
@@ -201,6 +233,15 @@ Profile
                             </div>
                             @endif
                         </div>
+<<<<<<< HEAD
+=======
+                        <div class="d-flex mt-auto">
+                            <a href="{{url('/profile/edit', $row->id)}}" type="button" class="btn btn-success">Edit
+                                Bio</a>
+                            <button type="button" class="btn btn-warning ml-2">Setting</button>
+                        </div>
+                        @endforeach
+>>>>>>> 863c2a3 (Revert "add batter ui in add and edit")
                     </div>
                 </div>
             </div>
