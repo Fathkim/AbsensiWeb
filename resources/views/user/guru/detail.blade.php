@@ -7,10 +7,11 @@ Detail {{$user->name}}
 @section('content')
 <!-- content -->
 <div class="container">
-    <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-    <div class="card-header d-flex align-items-center">
-            <p class="m-0">Detail User</p>
+    <div class="border-left-primary rounded shadow-lg bg-white p-3">
+    <div class="rounded px-2 bg-gray-200 d-flex align-items-center">
+            <p class="text-dark m-0">Detail User</p>
             <div class="ml-auto">
+                <a href="{{url('guru/edit', $user->id)}}" class="badge badge-success py-2 my-2 px-4 button-none shadow">Edit User</a>
                 @if(!$guru)
                 <span class="badge badge-danger py-2 my-2 px-4">
                     Belum Ada Biodata

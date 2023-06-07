@@ -12,9 +12,19 @@ Edit Your User
 
 <!-- content -->
 <div class="container">
+    @if(!$guru)
+    <span class="badge badge-danger py-2 my-2 px-4">
+        Belum Ada Biodata
+    </span>
+    @else
+    <span class="badge badge-success py-2 my-2 px-4">
+        Sudah Ada Biodata
+    </span>
+    @endif
     <div class="rounded rounded-3 shadow-lg bg-white p-3">
-        <p class="fs-4 fw-bold text-secondary text-capitalize mb-5">edit your user</p>
-
+        <div class="bg-secondary mb-5">
+            <p class="text-dark text-capitalize">edit your user</p>
+        </div>
         <form action="{{ route('update-guru', $user->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -26,7 +36,8 @@ Edit Your User
                             class="rounded rounded-3 img-thumbnail mb-3" width="210px" id="preview-selected-image">
                     </div>
                     <div class="mb-3">
-                        <input require type="file" accept="image/*" onchange="previewImage(event);" class="form-control" id="image-input" name="photo">
+                        <input require type="file" accept="image/*" onchange="previewImage(event);" class="form-control"
+                            id="image-input" name="photo">
                     </div>
                     @endforeach
                 </div>
@@ -40,7 +51,7 @@ Edit Your User
                         <input require type="email" class="form-control" id="email" name="email"
                             value="{{$user->email}}">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input require type="password" class="form-control" id="password" name="password">
                         @if ($errors->any())
@@ -51,27 +62,14 @@ Edit Your User
                         </div>
                         @endif
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-
-                            <label for="inputGroupSelect01">level</label>
-                            <select class="form-select form-control" require id="inputGroupSelect01" name="level">
-                                <option value="{{$user->level}}">{{$user->level}}</option>
-                                <option value="guru">guru</option>
-                                <option value="siswa">siswa</option>
-                                <option value="kaprodi">kaprodi</option>
-                            </select>
-
-                        </div>
-                        <div class="col-md-6 mb-4">
-
-                            <label for="inputGroupSelect01">mapel</label>
-                            <select class="form-select form-control" require id="inputGroupSelect01" name="id_mapel">
-                                @foreach ($mapel as $item)
-                                <option value="{{$item->id}}">{{$item->nama_mapel}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label for="inputGroupSelect01">level</label>
+                        <select class="form-select form-control" require id="inputGroupSelect01" name="level">
+                            <option value="{{$user->level}}">{{$user->level}}</option>
+                            <option value="guru">guru</option>
+                            <option value="siswa">siswa</option>
+                            <option value="kaprodi">kaprodi</option>
+                        </select>
                     </div>
                 </div>
             </div>
