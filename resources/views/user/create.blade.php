@@ -120,7 +120,7 @@ Create User
 @section('content')
 <!-- Page Heading -->
 @if(Auth::user()->level == 'admin')
-<div class="d-sm-flex align-items-center justify-content-between mb-3">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block">Buat User</h1>
 </div>
 @if ($message = Session::get('success'))
@@ -171,7 +171,7 @@ Create User
 </div>
 @endif
 
-<div class="d-sm-flex align-items-center justify-content-between mb-2 mt-4">
+<div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
     <h1 class="h3 mb-0 text-gray-800 d-sm-inline-block">Buat Jurusan</h1>
 </div>
 <div class="card shadow py-3 px-4">
@@ -189,9 +189,7 @@ Create User
                     aria-label="Username" aria-describedby="basic-addon1">
                     <option value="">Pilih PIC</option>
                     @foreach ($user as $item)
-                    @if($item->level == 'kaprodi')
                     <option value="{{$item->id}}">{{$item->name}}</option>
-                    @endif
                     @endforeach
                 </select>
             </div>
@@ -204,13 +202,14 @@ Create User
 </div>
 
 <!-- Page Heading -->
-<div class="row mb-1">
-    <div class="col-md-6">
+<div class="row justify-content-center mb-1 ml-2">
+
+    <div class="row px-2">
         <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
             <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Mapel</h1>
         </div>
 
-        <div class="card shadow py-3 px-3">
+        <div class="card shadow col-md-11 py-3 ">
             <form action="{{url('mapel-create')}}" method="post" id="myForm">
                 @csrf
                 <div class="input-group">
@@ -223,12 +222,12 @@ Create User
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="row px-2">
         <div class="d-sm-flex align-items-center justify-content-between mb-1 mt-5 mb-2">
             <h1 class="h4 mb-0 text-gray-800 d-sm-inline-block">Buat Kelas</h1>
         </div>
 
-        <div class="card shadow py-3 px-3">
+        <div class="card shadow col-md-11 py-3 ">
             <form action="{{url('kelas-create')}}" method="post" id="myForm">
                 @csrf
                 <div class="input-group">

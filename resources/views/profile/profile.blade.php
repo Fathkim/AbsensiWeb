@@ -3,9 +3,8 @@
 @section('title')
 Profile
 @endsection
-
-
 @section('sidebar')
+
 <!-- Sidebar - Brand -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('home')}}">
@@ -124,6 +123,7 @@ Profile
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
+
 @endsection
 
 @section('content')
@@ -141,8 +141,8 @@ Profile
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">Your Identiti Card
-                        </div>
+                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
+                            Your Identiti Card</div>
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <tr class="text-capitalize">
@@ -155,41 +155,39 @@ Profile
                                     <td>:</td>
                                     <td>{{Auth::user()->email}}</td>
                                 </tr>
-                                @foreach($siswa as $siswa)
-                                @if ($siswa)
+                                @foreach ($data as $row)
                                 <tr class="text-capitalize">
                                     <td>kelas</td>
                                     <td>:</td>
-                                    <td>{{$siswa->kelas->nama_kelas}}</td>
+                                    <td>{{$row->kelas->nama_kelas}}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>Alamat</td>
                                     <td>:</td>
-                                    <td>{{$siswa->alamat}}</td>
+                                    <td>{{$row->alamat}}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>No Hp</td>
                                     <td>:</td>
-                                    <td>{{$siswa->no_hp}}</td>
+                                    <td>{{$row->no_hp}}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NISN</td>
                                     <td>:</td>
-                                    <td>{{$siswa->nisn}}</td>
+                                    <td>{{$row->nisn}}</td>
                                 </tr>
                                 <tr class="text-capitalize">
                                     <td>NIS</td>
                                     <td>:</td>
-                                    <td>{{$siswa->nis}}</td>
+                                    <td>{{$row->nis}}</td>
                                 </tr>
                             </table>
                         </div>
                         <div class="d-flex mt-auto">
-                            <a href="{{url('profile/edit', $siswa->id)}}" type="button" class="btn btn-success">Edit
+                            <a href="{{url('/profile/edit', $row->id)}}" type="button" class="btn btn-success">Edit
                                 Bio</a>
                             <button type="button" class="btn btn-warning ml-2">Setting</button>
                         </div>
-                        @endif
                         @endforeach
                     </div>
                 </div>
