@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.5",
         "milon/barcode": "^6.0",
         "nesbot/carbon": "^2.66",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "vinkla/hashids": "^7.0"
     },
     "require-dev": {
