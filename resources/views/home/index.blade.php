@@ -119,16 +119,79 @@
             <a href="{{ url('/monthly-report') }}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i> Laporan bulanan</a>
         </div>
-    </li>
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('create-user')}}">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Buat User</span></a>
-    </li>
-    @endif
+        <!-- Content Row -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Record Absensi
+                </h6>
+                <form action=""></form>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#inputModal">
+                    Input Absensi
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>NISN</th>
+                                <th>Statsu</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                                <td>
+                                    <a href="http://www.youtube" class="btn btn-info">
+                                        <span class="text">info</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>Tokyo</td>
+                                <td>63</td>
+                                <td>
+                                    <a href="http://www.youtube" class="btn btn-info">
+                                        <span class="text">info</span>
+                                    </a>
 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>San Francisco</td>
+                                <td>66</td>
+                                <td>
+                                    <a href="http://www.youtube" class="btn btn-info">
+                                        <span class="text">info</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>Edinburgh</td>
+                                <td>22</td>
+                                <td>
+                                    <a href="http://www.youtube" class="btn btn-info">
+                                        <span class="text">info</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
     @if(Auth::user()->level == 'guru' || Auth::user()->level == 'kaprodi')
     <li class="nav-item">

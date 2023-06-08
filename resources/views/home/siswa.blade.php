@@ -21,10 +21,10 @@ Absen
             <span>Dashboard</span></a>
     </li>
     
-    @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
     
+    @if (Auth::user()->level == 'admin')
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
