@@ -17,8 +17,14 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        $data = Siswa::where('id_user', auth()->user()->id)->get();
-        return view('profile.profile', compact('data'));
+        $siswa = Siswa::where('id_user', auth()->user()->id)->get();
+        $user = User::where('id', auth()->user()->id)
+            ->where('name', auth()->user()->name)
+            ->get();
+        $currentUserName = auth()->user()->name;
+        $currentUserEmail = auth()->user()->email;
+        $currentUserBarcode = auth()->user()->barcode;
+        return view('profile.profile', compact('siswa', 'currentUserName', 'currentUserEmail', 'currentUserBarcode'));
     }
 
     public function edit($id){

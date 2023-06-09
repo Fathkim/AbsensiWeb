@@ -8,9 +8,11 @@ Detail {{$user->name}}
 <!-- content -->
 <div class="container">
     <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-        <div class="card-header d-flex align-items-center">
-            <p class="m-0">Detail User</p>
+        <div class="rounded px-2 bg-gray-200 d-flex align-items-center">
+            <p class="text-dark m-0">Detail User</p>
             <div class="ml-auto">
+                <a href="{{url('siswa/edit', $user->id)}}"
+                    class="badge badge-success py-2 my-2 px-4 button-none shadow">Edit User</a>
                 @if(!$siswa)
                 <span class="badge badge-danger py-2 my-2 px-4">
                     Belum Ada Biodata
@@ -23,77 +25,149 @@ Detail {{$user->name}}
             </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-borderless">
-                    @foreach ($siswa as $item)
-                    <tr>
-                        <th class="text-dark text-uppercase">Photo</th>
-                        <td>:</td>
-                        <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/siswa/'.$item->photo) }}"
-                                width="200px" />
-                        </td>
-                    </tr>
-                    @endforeach
-                    <tr>
-                        <th class="text-dark text-uppercase">Nama</th>
-                        <td>:</td>
-                        <td>{{$user->name}}</td>
-
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">E-mail</th>
-                        <td>:</td>
-                        <td>{{$user->email}}</td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Lavel</th>
-                        <td>:</td>
-                        <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
-                    </tr>
-                    @foreach ($siswa as $item)
-                    <tr>
-                        <th class="text-dark text-uppercase">Kelas</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->kelas->nama_kelas}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Nomor HP</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->no_hp}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">nisn</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->nisn}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">nis</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->nis}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="text-dark text-uppercase">Alamat</th>
-                        <td>:</td>
-                        <td>
-                            {{$item->alamat}}
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
             @if($siswa)
-            <a type="submit" href="/siswa" class="btn btn-warning shadow">Back</a>
-            @endif
-            @if(!$siswa)
+            <div class="row mb-5">
+                @foreach ($siswa as $item)
+                <div class="col-md-auto d-flex my-auto justify-content-center">
+                    <div class="img-preview"
+                        style="background-image: url('{{ asset('/storage/kaprodi/'.$item->photo) }}')"
+                        id="preview-selected-image"></div>
+                </div>
+                @endforeach
+                <div class="col-md-8 table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th class="text-dark text-uppercase">Nama</th>
+                            <td>:</td>
+                            <td class="px-0">{{$user->name}}</td>
+
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">E-mail</th>
+                            <td>:</td>
+                            <td class="px-0">{{$user->email}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Level</th>
+                            <td>:</td>
+                            <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Barcode</th>
+                            <td>:</td>
+                            <td class="px-0">{!!DNS1D::getBarcodeHTML("$user->barcode", 'C128')!!}</td>
+                        </tr>
+                        @foreach ($siswa as $item)
+                        <tr>
+                            <th class="text-dark text-uppercase">Kelas</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->kelas->nama_kelas}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Nomor HP</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->no_hp}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">nisn</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->nisn}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">nis</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->nis}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Alamat</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->alamat}}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+            <form action="{{ route('delete-bio-siswa', $item->id) }}" class="mt-4" method="post">
+                @csrf
+                {{method_field('DELETE')}}
+                <button type="submit"
+                    onclick="return confirm('Apakah anda akan menghapus biodata dari {{$user->name}} ?');"
+                    class="btn px-5 btn-warning shadow">Hapus Biodata</button>
+                <a href="/siswa" class="btn px-5 btn-primary shadow">Back</a>
+            </form>
+            @else
+            <div class="col-md-8 table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th class="text-dark text-uppercase">Nama</th>
+                            <td>:</td>
+                            <td class="px-0">{{$user->name}}</td>
+
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">E-mail</th>
+                            <td>:</td>
+                            <td class="px-0">{{$user->email}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Level</th>
+                            <td>:</td>
+                            <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Barcode</th>
+                            <td>:</td>
+                            <td class="px-0">{!!DNS1D::getBarcodeHTML("$user->barcode", 'C128')!!}</td>
+                        </tr>
+                        @foreach ($siswa as $item)
+                        <tr>
+                            <th class="text-dark text-uppercase">Kelas</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->kelas->nama_kelas}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Nomor HP</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->no_hp}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">nisn</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->nisn}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">nis</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->nis}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Alamat</th>
+                            <td>:</td>
+                            <td class="px-0">
+                                {{$item->alamat}}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
             <!-- maka tampilkan form untuk mengisi biodata -->
             <form action="{{route('create-siswa', $user->id)}}" method="post" enctype="multipart/form-data">
                 @csrf

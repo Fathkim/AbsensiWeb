@@ -65,5 +65,4 @@ class UserController extends Controller
         Jurusan::create($request->all());
         return redirect('create-user')->with('success', 'Jurusan created successfully.');
     }
-
 }

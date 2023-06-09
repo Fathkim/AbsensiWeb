@@ -7,10 +7,12 @@ Detail {{$user->name}}
 @section('content')
 <!-- content -->
 <div class="container">
-    <div class="card border-left-primary rounded-3 shadow-lg bg-white p-3">
-    <div class="card-header d-flex align-items-center">
-            <p class="m-0">Detail User</p>
+    <div class="border-left-primary rounded shadow-lg bg-white p-3">
+        <div class="rounded px-2 bg-gray-200 d-flex align-items-center">
+            <p class="text-dark m-0">Detail User</p>
             <div class="ml-auto">
+                <a href="{{url('guru/edit', $user->id)}}"
+                    class="badge badge-success py-2 my-2 px-4 button-none shadow">Edit User</a>
                 @if(!$guru)
                 <span class="badge badge-danger py-2 my-2 px-4">
                     Belum Ada Biodata
@@ -23,6 +25,63 @@ Detail {{$user->name}}
             </div>
         </div>
         <div class="card-body">
+            @if($guru)
+            @foreach ($guru as $item)
+            <div class="row mb-5">
+                <div class="col-md-auto d-flex justify-content-center">
+                    <div class="img-preview"
+                        style="background-image: url('{{ asset('/storage/guru/'.$item->photo) }}')"
+                        id="preview-selected-image"></div>
+                </div>
+
+                <div class="table-responsive col-md-8">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th class="text-dark text-uppercase">Nama</th>
+                            <td>:</td>
+                            <td>{{$user->name}}</td>
+
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">E-mail</th>
+                            <td>:</td>
+                            <td>{{$user->email}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Level</th>
+                            <td>:</td>
+                            <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
+                        </tr>
+                        @foreach ($guru as $item)
+                        <tr>
+                            <th class="text-dark text-uppercase">Mapel</th>
+                            <td>:</td>
+                            <td>
+                                {{$item->mapel->nama_mapel}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-dark text-uppercase">Nomor</th>
+                            <td>:</td>
+                            <td>
+                                <label class="text-dark">+62</label>
+                                {{$item->nomor}}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+            @endforeach
+            <form action="{{ route('delete-bio-guru', $item->id) }}" class="mt-4" method="post">
+            @csrf
+                {{method_field('DELETE')}}
+                <button type="submit"
+                    onclick="return confirm('Apakah anda akan menghapus biodata dari {{$user->name}} ?');"
+                    class="btn px-5 btn-warning shadow">Hapus Biodata</button>
+                    <a href="/kaprodi" class="btn px-5 btn-primary shadow">Back</a>
+            </form>
+            @else
             <div class="table-responsive">
                 <table class="table table-borderless">
                     @foreach($guru as $item)
@@ -30,8 +89,7 @@ Detail {{$user->name}}
                         <th class="text-dark text-uppercase">Photo</th>
                         <td>:</td>
                         <td>
-                            <img class="img-thumbnail" src="{{ asset('/storage/guru/'.$item->photo) }}"
-                            width="200px" />
+                            <img class="img-thumbnail" src="{{ asset('/storage/guru/'.$item->photo) }}" width="200px" />
                         </td>
                     </tr>
                     @endforeach
@@ -47,7 +105,7 @@ Detail {{$user->name}}
                         <td>{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <th class="text-dark text-uppercase">Lavel</th>
+                        <th class="text-dark text-uppercase">Level</th>
                         <td>:</td>
                         <td class="badge badge-primary py-2 mt-2 px-4">{{$user->level}}</td>
                     </tr>
@@ -58,7 +116,7 @@ Detail {{$user->name}}
                         <td>
                             {{$item->mapel->nama_mapel}}
                         </td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <th class="text-dark text-uppercase">Nomor</th>
                         <td>:</td>
@@ -70,12 +128,6 @@ Detail {{$user->name}}
                     @endforeach
                 </table>
             </div>
-            @if($guru)
-            <a type="submit" href="/guru" class="btn btn-primary px-5 shadow">Back</a>
-            <a type="submit" href="{{url('guru/edit', $user->id)}}" class="btn px-5 btn-warning shadow">Edit</a>
-            @endif
-            @if(!$guru)
-            <!-- maka tampilkan form untuk mengisi biodata -->
             <form action="{{route('create-guru', $user->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">

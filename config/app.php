@@ -136,6 +136,8 @@ return [
 
     'providers' => [
 
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
         /*
          * Laravel Framework Service Providers...
          */
@@ -175,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
 
     ],
 
@@ -190,6 +193,8 @@ return [
     */
 
     'aliases' => [
+
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
@@ -227,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
     ],
 
 ];

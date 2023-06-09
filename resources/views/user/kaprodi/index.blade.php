@@ -145,7 +145,6 @@ Kaprodi User
                         <th>Nama</th>
                         <th>E-mail</th>
                         <th>Status</th>
-
                         <th>Dibuat pada</th>
                         <th>Pilihan</th>
                     </tr>
