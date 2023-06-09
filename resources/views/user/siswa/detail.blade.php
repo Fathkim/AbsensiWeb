@@ -100,7 +100,7 @@ Detail {{$user->name}}
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">kelas</label>
-                        <select class="form-control" require id="inputGroupSelect01" name="id_kelas">
+                        <select class="form-control" required id="inputGroupSelect01" name="id_kelas">
                             <option value="0">Choose...</option>
                             @foreach ($kelas as $item)
                             <option value="{{$item->id}}">{{$item->nama_kelas}}</option>
@@ -110,7 +110,7 @@ Detail {{$user->name}}
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Photo</label>
                         <div class="mb-3">
-                            <input type="file" class="form-control p-0" id="image-input" name="photo">
+                            <input type="file" required class="form-control p-0" id="image-input" name="photo">
                             <input type="number" class="form-control" id="image-input" name="id_user"
                                 value="{{$user->id}}" hidden>
                         </div>
@@ -118,25 +118,25 @@ Detail {{$user->name}}
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Nomor HP</label>
                         <div class="mb-3">
-                            <input type="number" class="form-control" name="no_hp">
+                            <input type="number" required class="form-control" name="no_hp">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Alamat</label>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="alamat">
+                            <input type="text" required class="form-control" name="alamat">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">NISN</label>
                         <div class="mb-3">
-                            <input type="number" class="form-control" name="nisn">
+                            <input type="number" required class="form-control" name="nisn">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">NIS</label>
                         <div class="mb-3">
-                            <input type="number" class="form-control" name="nis">
+                            <input type="number" required class="form-control" name="nis">
                         </div>
                     </div>
 

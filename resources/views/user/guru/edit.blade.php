@@ -14,7 +14,6 @@ Edit Your User
 <div class="container">
     <div class="rounded rounded-3 shadow-lg bg-white p-3">
         <p class="fs-4 fw-bold text-secondary text-capitalize mb-5">edit your user</p>
-
         <form action="{{ route('update-guru', $user->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -26,7 +25,8 @@ Edit Your User
                             class="rounded rounded-3 img-thumbnail mb-3" width="210px" id="preview-selected-image">
                     </div>
                     <div class="mb-3">
-                        <input require type="file" accept="image/*" onchange="previewImage(event);" class="form-control" id="image-input" name="photo">
+                        <input require type="file" accept="image/*" onchange="previewImage(event);" class="form-control"
+                            id="image-input" name="photo">
                     </div>
                     @endforeach
                 </div>
@@ -78,31 +78,46 @@ Edit Your User
             <div class="row">
                 <div class="mt-2 form-group col-md-6">
                     <button type="submit" class="btn btn-success col-md-4 text-uppercase">edit</button>
+                    <a href="#" type="button" class="btn btn-danger px-5 delete" data-id="{{$user->id}}">Delete</a>
                 </div>
             </div>
         </form>
     </div>
-
-    <form action="{{ route('delete-guru', $user->id) }}" class="mt-4" method="post">
-        @csrf
-        {{method_field('DELETE')}}
-        <button type="submit" class="btn btn-danger px-5"
-            onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
-        <a href="{{url('/guru')}}" class="btn btn-warning px-4">Cancel</a>
-    </form>
 </div>
 
 
 <script>
-const previewImage = (event) => {
-    const imageFiles = event.target.files;
-    const imageFilesLength = imageFiles.length;
-    if (imageFilesLength > 0) {
-        const imageSrc = URL.createObjectURL(imageFiles[0]);
-        const imagePreviewElement = document.querySelector("#preview-selected-image");
-        imagePreviewElement.src = imageSrc;
-        imagePreviewElement.style.display = "block";
-    }
-};
+    const previewImage = (event) => {
+        const imageFiles = event.target.files;
+        const imageFilesLength = imageFiles.length;
+        if (imageFilesLength > 0) {
+            const imageSrc = URL.createObjectURL(imageFiles[0]);
+            const imagePreviewElement = document.querySelector("#preview-selected-image");
+            imagePreviewElement.src = imageSrc;
+            imagePreviewElement.style.display = "block";
+        }
+    };
+
+    $('.delete').click(function () {
+        var dataid = $(this).attr('data-id')
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/delete-guru/" + dataid + ""
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+    })
+
 </script>
 @endsection

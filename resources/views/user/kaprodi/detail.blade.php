@@ -73,7 +73,7 @@ Detail {{$user->name}}
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Jurusan</label>
-                        <select class="form-control" require id="inputGroupSelect01" name="id_jurusan">
+                        <select class="form-control" required id="inputGroupSelect01" name="id_jurusan">
                             <option value="0">Choose...</option>
                             @foreach ($jurusan as $item)
                             <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
@@ -83,7 +83,7 @@ Detail {{$user->name}}
                     <div class="col-md-6 mb-4">
                         <label for="name" for="inputGroupSelect01">Photo</label>
                         <div class="mb-3">
-                            <input type="file" class="form-control p-0" id="image-input" name="photo">
+                            <input type="file" required class="form-control p-0" id="image-input" name="photo">
                             <input type="number" class="form-control p-0" id="image-input" name="id_user"
                                 value="{{$user->id}}" hidden>
                         </div>
