@@ -72,27 +72,41 @@ Edit Your User
             <button type="submit" class="btn btn-success col-md-2 text-uppercase">edit</button>
         </form>
     </div>
-
-    <form action="{{ route('delete-guru', $user->id) }}" class="mt-4" method="post">
-        @csrf
-        {{method_field('DELETE')}}
-        <button type="submit" class="btn btn-danger px-5"
-            onclick="return confirm('Apakah anda akan menghapus {{$user->name}} ?');">Hapus</button>
-        <a href="{{url('/guru')}}" class="btn btn-warning px-4">Cancel</a>
-    </form>
 </div>
 
 
 <script>
-const previewImage = (event) => {
-    const imageFiles = event.target.files;
-    const imageFilesLength = imageFiles.length;
-    if (imageFilesLength > 0) {
-        const imageSrc = URL.createObjectURL(imageFiles[0]);
-        const imagePreviewElement = document.querySelector("#preview-selected-image");
-        imagePreviewElement.src = imageSrc;
-        imagePreviewElement.style.display = "block";
-    }
-};
+    const previewImage = (event) => {
+        const imageFiles = event.target.files;
+        const imageFilesLength = imageFiles.length;
+        if (imageFilesLength > 0) {
+            const imageSrc = URL.createObjectURL(imageFiles[0]);
+            const imagePreviewElement = document.querySelector("#preview-selected-image");
+            imagePreviewElement.src = imageSrc;
+            imagePreviewElement.style.display = "block";
+        }
+    };
+
+    $('.delete').click(function () {
+        var dataid = $(this).attr('data-id')
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/delete-guru/" + dataid + ""
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+    })
+
 </script>
 @endsection
