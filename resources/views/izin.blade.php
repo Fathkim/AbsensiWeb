@@ -130,7 +130,7 @@ Izin
             <h6 class="mb-0 p-3">Buat Perizinan</h6>
         </div>
         <div class="card-body">
-            <form action="/izin/send" id="izin-form" method="post">
+            <form action="{{route('izin-send')}}" id="izin-form" method="post">
                 {{-- {{method_field('POST')}} --}}
                 @csrf
                 <div class="form-group row">
@@ -147,9 +147,12 @@ Izin
                     <div class="col-md-2 mb-2">
                         <label class="form-label">Kelas</label>
                     </div>
-                    <div class="col-md-10 mb-2">
-                        <input type="text" required class="form-control" name="">
-                    </div>
+                    <select class="form-control col-md-10" require id="inputGroupSelect01" name="id_kelas">
+                            <option value="0">Choose...</option>
+                            @foreach ($kelas as $item)
+                            <option value="{{$item->id}}">{{$item->nama_kelas}}</option>
+                            @endforeach
+                        </select>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-2 mb-2">

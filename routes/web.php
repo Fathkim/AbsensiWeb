@@ -27,12 +27,15 @@ Route::get('/profile/edit/{id}', 'ProfileController@edit')->name('profile-edit')
 Route::put('/profile/send/{id}', 'ProfileController@update')->name('profile-send');
 
 
-// Home | Dashboard
+// Home | Dashboard, Absen
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/absen', 'HomeController@store')->name('absen');
 
 // izin
 Route::get('/izin', 'IzinController@index')->name('izin');
-Route::post('/izin/send', 'IzinController@store');
+Route::post('/izin/send', 'IzinController@store')->name('izin-send');
+
+// Route::resource('absen', 'AbsenController');
 
 /**======================================== */
 

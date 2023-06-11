@@ -135,8 +135,7 @@ Profile
     @foreach ($siswa as $item)
     <div class="col-md-auto d-flex mb-5 justify-content-center">
         <div class="img-preview" style="background-image: url('{{ asset('/storage/siswa/'.$item->photo) }}')"
-            id="preview-selected-image">
-        </div>
+            id="preview-selected-image"></div>
     </div>
     @endforeach
 
@@ -159,12 +158,13 @@ Profile
                                     <td>{{ $currentUserEmail }}</td>
                                 </tr>
                                 @if ($siswa)
-                                <tr>
-                                    <th class="text-dark text-uppercase">Barcode</th>
-                                    <td>:</td>
-                                    <td class="px-0">{!! DNS1D::getBarcodeHTML($currentUserBarcode, 'C128') !!}</td>
-                                </tr>
                                 @foreach ($siswa as $siswa)
+                                <tr class="text-capitalize">
+                                    <td>barcode</td>
+                                    <td>:</td>
+                                    <td class="px-0">{!!DNS1D::getBarcodeSVG("$siswa->barcode", 'C128')!!}</td>
+
+                                </tr>
                                 <tr class="text-capitalize">
                                     <td>kelas</td>
                                     <td>:</td>
@@ -191,11 +191,13 @@ Profile
                                     <td>{{ $siswa->nis }}</td>
                                 </tr>
                                 @endforeach
+                                @else
+                                belum ada data
                                 @endif
                             </table>
-                            @if ($siswa)
+                            @if($siswa)
                             <div class="d-flex mt-auto">
-                                <button type="button" class="btn btn-warning ml-2">Setting</button>
+                                <a href="profile/edit/{{$item->id}}" class="btn btn-primary ml-2">Edit Bio</a>
                             </div>
                             @endif
                         </div>

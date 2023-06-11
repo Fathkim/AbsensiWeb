@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Izin;
+use App\Kelas;
 
 class IzinController extends Controller
 {
@@ -13,7 +14,8 @@ class IzinController extends Controller
     }
     public function index()
     {
-        return view('izin');
+        $kelas = Kelas::all();
+        return view('izin', compact('kelas'));
     }
 
     public function store(Request $request){

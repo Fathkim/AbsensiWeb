@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIzinTable extends Migration
+class CreateProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateIzinTable extends Migration
      */
     public function up()
     {
-        Schema::create('izin', function (Blueprint $table) {
+        Schema::create('profile', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user')->unsigned();
-            $table->enum('keterangan', ['sakit', 'izin', 'lainnya']);
-            // $table->date('tanggal');
-            $table->string('bukti_foto')->nullable();
-            $table->string('deskripsi')->nullable();
+            $table->integer('id_siswa')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_siswa')->references('id')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -32,6 +31,6 @@ class CreateIzinTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('izin');
+        Schema::dropIfExists('profile');
     }
 }

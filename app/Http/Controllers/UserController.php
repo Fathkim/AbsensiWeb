@@ -26,7 +26,6 @@ class UserController extends Controller
     {
         $date = Carbon::now();
         $bulanDanTanggal = $date->format('d F Y');
-        $number = random_int(10000000, 99999999);
 
         $data = request()->validate([
             'name' => 'required',
@@ -41,7 +40,6 @@ class UserController extends Controller
 
         // Mengatur nilai employe_since secara otomatis
         $data['employe_since'] = $bulanDanTanggal;
-        $data['barcode'] = $number;
 
         User::create($data);
         return redirect('/create-user')->with('success', 'User add successfully.');

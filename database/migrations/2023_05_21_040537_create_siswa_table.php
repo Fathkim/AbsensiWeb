@@ -17,6 +17,7 @@ class CreateSiswaTable extends Migration
             $table->increments('id');
             $table->integer('id_kelas')->unsigned();
             $table->integer('id_user')->unsigned();
+            $table->string('barcode')->unique();
             $table->string('alamat')->nullable();
             $table->bigInteger('no_hp')->nullable();
             $table->bigInteger('nis')->nullable();

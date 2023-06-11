@@ -46,6 +46,7 @@ class SiswaController extends Controller
     {
         $kelas = Kelas::all();
         $data = $request->all();
+        $number = random_int(10000000, 99999999);
 
         $dataSiswa = [
             'id_user' => $data['id_user'],
@@ -54,6 +55,7 @@ class SiswaController extends Controller
             'alamat' => $data['alamat'],
             'nis' => $data['nis'],
             'nisn' => $data['nisn'],
+            'barcode' => $number,
         ];
 
 
@@ -65,8 +67,10 @@ class SiswaController extends Controller
             $dataSiswa['photo'] = $image_name; //mengirimkan ke database
         }
 
+        // dd($dataSiswa);
+
         Siswa::create($dataSiswa);
-        return redirect()->back()->with('success', 'Data siswa berhasil ditambahkan');
+        return back()->with('success', 'Data siswa berhasil ditambahkan');
     }
 
     /**

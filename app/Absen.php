@@ -8,8 +8,9 @@ class Absen extends Model
 {
     protected $table = 'absen';
     protected $guarded = [];
-    public function user()
+
+    public function siswa()
     {
-        return $this->belongsTo('App\User', 'id_user');
+        return $this->belongsTo(Siswa::class, 'id_siswa');
     }
 }

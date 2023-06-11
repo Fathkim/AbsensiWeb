@@ -20,11 +20,11 @@ Absen
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-    
+
     @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
-    
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -148,9 +148,9 @@ Absen
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
                             Check-In (Absen)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                        <div class="h5 mb-0 font-weight-bold text-dark">{{$currentUserName}}</div>
+                        <div class="mt-4 mb-0 font-weight-bold text-dark">{{$hari}}</div>
+                        <div class="text-gray-800">{{$waktu}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -166,9 +166,9 @@ Absen
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold mb-3 text-danger text-uppercase mb-1">
                             Check-Out (Absen)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Ananda Gharyn</div>
+                        <div class="h5 mb-0 font-weight-bold text-dark">{{$currentUserName}}</div>
+                        <div class="mt-4 mb-0 font-weight-bold text-dark">{{$hari}}</div>
+                        <div class="text-gray-800">{{$waktu}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-check fa-2x text-danger"></i>

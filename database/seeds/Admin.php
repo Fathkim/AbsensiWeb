@@ -13,7 +13,6 @@ class Admin extends Seeder
     {
         $user = new \App\User;
         $user->name = "admin";
-        $user->barcode = \Hash::make('9oi9nvh');
         $user->email = "admin@gmail.com";
         $user->level = "admin";
         $user->password = \Hash::make('asdasdasd');

@@ -21,10 +21,10 @@ class ProfileController extends Controller
         $user = User::where('id', auth()->user()->id)
             ->where('name', auth()->user()->name)
             ->get();
+        $gambar = Siswa::where('id_user', auth()->user()->id)->get();
         $currentUserName = auth()->user()->name;
         $currentUserEmail = auth()->user()->email;
-        $currentUserBarcode = auth()->user()->barcode;
-        return view('profile.profile', compact('siswa', 'currentUserName', 'currentUserEmail', 'currentUserBarcode'));
+        return view('profile.profile', compact('siswa', 'currentUserName', 'currentUserEmail','gambar'));
     }
 
     public function edit($id){

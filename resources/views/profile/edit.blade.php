@@ -126,64 +126,71 @@ Profile
 <!-- Earnings (Annual) Card Example -->
 
 
-        <div class="row">
-            <div class="col-xl-4 col-md-4 mb-4 text-center ">
-                <img src="{{ asset('/images/icon-web.png') }}" alt="#" class="rounded img-fluid img-thumbnail mb-3"
-                    style="max-width: 100%; width:250px;">
-            </div>
-            <div class="col-xl-8 col-md-8 mb-4">
-                <div class="card shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
-                                    Your Identiti Card</div>
-                                <form action="{{url('/profile/send', $siswa->id)}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" readonly id="nama" value="{{Auth::user()->name}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" readonly class="form-control" name="" id="email" value="{{auth()->user()->email}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="kelas">Kelas</label>
-                                        <input type="text" name="id_kelas" hidden value="{{$siswa->id_kelas}}">
-                                        <input type="text" readonly class="form-control" name="" value="{{$siswa->kelas->nama_kelas}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="alamat">Alamat</label>
-                                        <input type="text" class="form-control" name="alamat" id="nisn" value="{{$siswa->alamat}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="no_hp">No Hp</label>
-                                        <input type="number" class="form-control" name="no_hp" id="nisn" value="{{$siswa->no_hp}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nisn">NIS</label>
-                                        <input type="text" class="form-control" name="nis" id="nisn" value="{{$siswa->nis}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nisn">NISN</label>
-                                        <input type="text" class="form-control" name="nisn" id="nisn" value="{{$siswa->nisn}}">
-                                    </div>
-                                    <div class="d-flex mt-4">
-                                        <button type="submit" class="btn btn-success">Confirm</button>
-                                        <button type="button" class="btn btn-warning ml-2">Setting</button>
-                                    </div>
-                                </form>
+<div class="row">
+
+        <div class="col-md-auto d-flex mb-5 justify-content-center">
+            <div class="img-preview" style="background-image: url('{{ asset('/storage/siswa/'.$siswa->photo) }}')"
+                id="preview-selected-image"></div>
+        </div>
+
+    <div class="col-md-9 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold mb-3 text-success text-uppercase mb-1">
+                            Your Identiti Card</div>
+                        <form action="{{url('/profile/send', $siswa->id)}}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" readonly id="nama"
+                                    value="{{Auth::user()->name}}">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" readonly class="form-control" name="" id="email"
+                                    value="{{auth()->user()->email}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="kelas">Kelas</label>
+                                <input type="text" name="id_kelas" hidden value="{{$siswa->id_kelas}}">
+                                <input type="text" readonly class="form-control" name=""
+                                    value="{{$siswa->kelas->nama_kelas}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" class="form-control" name="alamat" id="nisn"
+                                    value="{{$siswa->alamat}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="no_hp">No Hp</label>
+                                <input type="number" class="form-control" name="no_hp" id="nisn"
+                                    value="{{$siswa->no_hp}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nisn">NIS</label>
+                                <input type="text" class="form-control" name="nis" id="nisn" value="{{$siswa->nis}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nisn">NISN</label>
+                                <input type="text" class="form-control" name="nisn" id="nisn" value="{{$siswa->nisn}}">
+                            </div>
+                            <div class="d-flex mt-4">
+                                <button type="submit" class="btn btn-success">Confirm</button>
+                                <a href="/profile" class="btn btn-warning ml-2">Cancel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
 @endif

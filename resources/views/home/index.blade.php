@@ -26,7 +26,7 @@ Dashboard
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-    
+
     @if (Auth::user()->level == 'admin')
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -120,6 +120,30 @@ Dashboard
         </div>
     </div>
 
+    <!-- Logout Modal-->
+    <div class="modal fade" id="inputAbsen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Input Attendance</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('absen')}}" method="post">
+                        @csrf
+                        <input type="text" name="barcode" class="mb-4 form-control" autocomplete="off"
+                            placeholder="Silakan Scan, jika gagal masukan kode user">
+                        <button class="btn btn-primary" type="submit">Input</button>
+                        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -132,76 +156,48 @@ Dashboard
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block">Dashboard</h1>
-    <a href="{{url('/monthly-report')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-download fa-sm text-white-50"></i> Laporan bulanan</a>
-</div>
-
-<!-- Content Row -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">
-            Record Absensi
-        </h6>
+    <h1 class="h3 mb-0 text-gray-800 d-none d-sm-inline-block"> Record Absensi
+    </h1>
+    <div class="d-none d-sm-inline-block">
+        <a data-toggle="modal" data-target="#inputAbsen" data-target="#inputAbsen"
+            class="d-sm-inline-block btn btn-sm btn-success shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Input Absensi</a>
+        <a href="{{url('/monthly-report')}}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Laporan bulanan</a>
     </div>
-    <div class="card-body">
+</div>
+@if ($message = Session::get('status'))
+<div class="alert alert-success" role="alert">
+    {{ $message }}
+</div>
+@endif
+<!-- Content Row -->
+<div class="card border-left-primary shadow mb-4">
+    <div class="p-0">
         <div class="table-responsive">
-            <table class="table table-hover" width="100%" cellspacing="0">
+            <table class="table table-hover m-0" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>NISN</th>
                         <th>Statsu</th>
                         <th>Date</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($absen as $item)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>
+                        <td>{{$item->siswa->user->name}}</td>
+                        <td>{{$item->siswa->nisn}}</td>
+                        <td>{{$item->status}}</td>
+                        <td>{{$item->checkin}}</td>
+                        <!-- <td>
                             <a href="http://www.youtube" class="btn btn-info">
                                 <span class="text">info</span>
                             </a>
-                        </td>
+                        </td> -->
                     </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>
-                            <a href="http://www.youtube" class="btn btn-info">
-                                <span class="text">info</span>
-                            </a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
